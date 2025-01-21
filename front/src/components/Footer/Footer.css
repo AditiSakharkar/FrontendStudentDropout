@@ -1,0 +1,24 @@
+/* src/components/Footer/Footer.css */
+.footer {
+  position: fixed; /* Fix the footer to the bottom of the screen */
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: rgba(51, 51, 51, 0.8); /* Semi-transparent background */
+  color: white;
+  padding: 1rem;
+  z-index: 1000; /* Ensures footer stays above other content */
+}
+
+.social-handles a {
+  color: white;
+  margin: 0 5px;
+  text-decoration: none;
+}
+
+.social-handles a:hover {
+  text-decoration: underline;
+}

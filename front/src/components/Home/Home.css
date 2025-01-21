@@ -1,0 +1,35 @@
+/* src/components/Home/Home.css */
+.home {
+  background-image: url('backgroundimg.jpg'); /* Ensure the image path is correct */
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center; /* Centers content vertically */
+  height: 100vh;
+  color: white;
+  padding-top: 0; /* Remove top padding */
+}
+
+.home h2 {
+  font-size: 3rem; /* Increased font size for more prominence */
+  margin-bottom: 2rem; /* Increased space below the heading */
+  text-align: center; /* Centers the heading */
+}
+
+.home-btn {
+  background-color: rgba(255, 255, 255, 0.8);
+  border: none;
+  padding: 1rem 3rem; /* Increased padding to make buttons bigger */
+  margin: 1rem 0; /* Increased margin for spacing between buttons */
+  cursor: pointer;
+  font-size: 1.2rem; /* Increased font size for better visibility */
+  width: 320px; /* Ensures buttons are the same width */
+  border-radius: 5px; /* Adds rounded corners */
+  transition: background-color 0.3s ease;
+}
+
+.home-btn:hover {
+  background-color: rgba(255, 255, 255, 0.6); /* Slightly darker background on hover */
+}

@@ -1,0 +1,33 @@
+/* Scrolling Text Container */
+.scrolling-text {
+    color: firebrick; /* Text color */
+    padding: 10px 0; /* Vertical padding */
+    width: 100%; /* Full width */
+    position: absolute; /* Position below navbar */
+    top: 60px; /* Adjust this value based on your navbar height */
+    left: 0;
+    display: flex;
+   
+    overflow: hidden; /* Hide the overflow */
+    background-color: transparent; /* Explicitly set the background to transparent */
+}
+
+/* Scrolling Text Styles */
+.scrolling-text p {
+    white-space: nowrap; /* Prevent text from wrapping */
+    margin: 0;
+    padding-left: 100%; /* Start the text from outside the right side */
+    font-size: 1rem; /* Smaller font size */
+    animation-delay: 0s; /* Ensure the text starts immediately */
+    animation: scroll-left 25s linear infinite; /* Start scrolling immediately, repeat every 25s */
+}
+
+/* Keyframes for scrolling effect */
+@keyframes scroll-left {
+    0% {
+        transform: translateX(100%); /* Start from right outside the screen */
+    }
+    100% {
+        transform: translateX(-100%); /* Move to left outside the screen */
+    }
+}

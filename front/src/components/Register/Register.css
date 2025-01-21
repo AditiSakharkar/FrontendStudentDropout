@@ -1,0 +1,65 @@
+/* src/components/Register/Register.css */
+.register {
+  background-image: url('backgroundimg.jpg'); /* Ensure correct path */
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  color: white;
+}
+
+.register h3 {
+  font-size: 2.2rem; /* Increased font size for the heading */
+  margin-bottom: 2.5rem; /* Increased space below the heading */
+}
+
+.register form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.register input {
+  width: 320px; /* Increased width of the input fields */
+  padding: 0.8rem; /* Increased padding for better touch targets */
+  margin: 0.8rem 0; /* Increased margin between input fields */
+  border-radius: 4px;
+  border: 1px solid #ccc;
+  background-color: #fff;
+  color: #333;
+  font-size: 1.1rem; /* Increased font size inside input fields */
+}
+
+.register input:focus {
+  outline: none;
+  border-color: limegreen;
+}
+
+.register-btn {
+  background-color: limegreen;
+  border: none;
+  padding: 0.8rem 2.5rem; /* Increased padding for a larger button */
+  color: white;
+  font-size: 1.2rem; /* Slightly larger font size for the button */
+  cursor: pointer;
+  margin-top: 1.5rem; /* Added more space above the button */
+  border-radius: 5px; /* Slightly rounded button edges */
+  width: 340px;  /* Ensures buttons are the same width */
+}
+
+.register-btn:hover {
+  background-color: darkgreen;
+}
+
+.register a {
+  color: limegreen;
+  text-decoration: none;
+  margin-top: 1.5rem; /* Added more spacing above the link */
+  text-align: center;
+  width: 320px; /* Ensures all links have the same width */
+  font-size: 1.1rem; /* Increased font size of the link for better visibility */
+}

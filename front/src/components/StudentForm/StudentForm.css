@@ -1,0 +1,142 @@
+/* StudentForm.css */
+.form-container {
+  background-image: url('backgroundimg.jpg'); /* Set the background image */
+  background-size: cover; /* Ensures the background image covers the entire screen */
+  background-position: center;
+  background-attachment: fixed; /* Keeps the background fixed during scrolling */
+  height: 100vh; /* Ensures the container takes full height */
+  width: 100vw; /* Ensures the container takes full width */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center; /* Centers the form vertically and horizontally */
+  padding: 20px;
+  box-sizing: border-box;
+  position: relative;
+}
+
+.form-title {
+  font-size: 2rem;
+  margin-bottom: 2rem;
+  color: white;
+  text-align: center;
+  width: 100%;
+}
+
+.enrollment-form {
+  background-color: rgba(0, 0, 0, 0.6); /* Slight transparency for readability */
+  padding: 2rem;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 700px; /* Ensures the form doesn't stretch too wide */
+  margin: 0 auto;
+  box-sizing: border-box;
+}
+
+.enrollment-form label {
+  font-size: 1.1rem;
+  color: #fff;
+  font-weight: 600;
+  margin-bottom: 8px;
+  display: block;
+}
+
+.enrollment-form input,
+.enrollment-form select,
+.enrollment-form textarea {
+  width: 100%;
+  padding: 0.8rem;
+  margin-bottom: 1rem;
+  font-size: 1.1rem;
+  color: #333;
+  background-color: #fff;
+  border: none;
+  border-radius: 5px;
+  box-sizing: border-box;
+}
+
+.enrollment-form input:focus,
+.enrollment-form select:focus,
+.enrollment-form textarea:focus {
+  border-color: #28a745;
+  box-shadow: 0 0 5px rgba(40, 167, 69, 0.5);
+}
+
+.submit-button {
+  background-color: limegreen;
+  border: none;
+  padding: 1rem 2.5rem;
+  color: white;
+  font-size: 1.2rem;
+  font-weight: bold;
+  cursor: pointer;
+  border-radius: 5px;
+  text-align: center;
+  width: 100%;
+  margin-top: 1.5rem;
+}
+
+.submit-button:hover {
+  background-color: darkgreen;
+}
+
+/* New styling for date fields side by side */
+.date-fields {
+  display: flex;
+  gap: 15px;
+}
+
+.date-fields input {
+  width: 48%;
+}
+
+@media (max-width: 768px) {
+  .form-container {
+    padding: 15px;
+  }
+
+  .enrollment-form {
+    padding: 1.5rem;
+  }
+
+  .form-title {
+    font-size: 1.5rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .enrollment-form label {
+    font-size: 1rem;
+  }
+
+  .enrollment-form input,
+  .enrollment-form select,
+  .enrollment-form textarea {
+    font-size: 1rem;
+    padding: 0.75rem;
+  }
+
+  .submit-button {
+    padding: 1rem 2rem;
+    font-size: 1.1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .form-title {
+    font-size: 1.3rem;
+    margin-bottom: 1rem;
+  }
+
+  .enrollment-form input,
+  .enrollment-form select,
+  .enrollment-form textarea {
+    font-size: 0.95rem;
+    padding: 0.7rem;
+  }
+
+  .submit-button {
+    padding: 0.9rem 1.8rem;
+    font-size: 1rem;
+  }
+}

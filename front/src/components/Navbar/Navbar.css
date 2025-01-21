@@ -1,0 +1,73 @@
+/* src/components/Navbar/Navbar.css */
+.navbar {
+  position: fixed; /* Fix navbar at the top */
+  top: 0;
+  left: 0;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: rgba(51, 51, 51, 0.8); /* Transparent background for overlap effect */
+  color: white;
+  padding: 0 1rem; /* Adjusted padding to ensure more space */
+  z-index: 1000; /* Ensures the navbar stays above other content */
+  box-sizing: border-box; /* Ensure padding doesn't affect width */
+}
+
+.navbar h1 {
+  font-size: 1.5rem; /* Increased font size for better visibility */
+}
+
+.nav-buttons {
+  display: flex;
+  gap: 10px; /* Space between buttons */
+  flex-wrap: wrap; /* Ensure buttons wrap to the next line if necessary */
+}
+
+.nav-buttons button {
+  padding: 8px 15px; /* Increased padding for bigger buttons */
+  background-color: #444;
+  color: white;
+  border: none;
+  cursor: pointer;
+  font-size: 1rem; /* Ensure readable font size */
+  border-radius: 5px; /* Rounded button edges */
+  transition: background-color 0.3s ease;
+}
+
+.nav-buttons button:hover {
+  background-color: #555;
+}
+
+
+
+/* Scrolling Text Container */
+.scrolling-text {
+  background-color: #333; /* Dark background for contrast */
+  color: white; /* White text color */
+  padding: 10px 0; /* Vertical padding */
+  width: 100%; /* Ensure it stretches across the width of the page */
+  position: absolute; /* Make it fixed below the navbar */
+  top: 60px; /* Adjust this value depending on the height of your navbar */
+  left: 0;
+  display: flex;
+  justify-content: center; /* Center the text horizontally */
+  overflow: hidden; /* Hide the content that overflows */
+}
+
+.scrolling-text p {
+  white-space: nowrap; /* Prevent text from wrapping */
+  margin: 0;
+  padding-left: 100%; /* Initially place the text outside the view */
+  animation: scroll-left 10s linear infinite; /* Animate the text from right to left */
+  font-size: 1.2rem; /* Font size */
+}
+
+@keyframes scroll-left {
+  from {
+    transform: translateX(100%); /* Start the text from outside the screen */
+  }
+  to {
+    transform: translateX(-100%); /* End the text outside the other side of the screen */
+  }
+}

@@ -1,0 +1,34 @@
+/* src/components/Contact/Contact.css */
+.contact {
+  background-image: url('backgroundimg.jpg');
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  color: white;
+  border-radius: 5px;
+}
+
+.contact h3 {
+  font-size: 2rem; /* Increased font size for heading */
+}
+
+.contact input,
+.contact textarea {
+  width: 320px; /* Slightly increased width */
+  padding: 0.75rem; /* Increased padding */
+  margin: 0.75rem 0; /* Increased margin for more space */
+}
+
+.submit-btn {
+  background-color: green;
+  border: none;
+  padding: 0.75rem 3rem; /* Increased padding for bigger button */
+  color: white;
+  font-size: 1.2rem; /* Slightly increased font size */
+  cursor: pointer;
+  border-radius: 4px; /* Optional rounded corners */
+}

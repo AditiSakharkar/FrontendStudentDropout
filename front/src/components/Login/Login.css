@@ -1,0 +1,44 @@
+/* src/components/Login/Login.css */
+.login {
+  background-image: url('backgroundimg.jpg');
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  color: white;
+}
+
+.login h3 {
+  font-size: 2rem; /* Slightly increased font size for the heading */
+  margin-bottom: 1rem; /* Added some space below the heading */
+}
+
+.login input {
+  width: 320px; /* Increased input width */
+  padding: 0.8rem; /* Increased padding for better touch target */
+  margin: 0.8rem 0; /* Slightly increased margin between input fields */
+  font-size: 1.1rem; /* Increased font size inside input fields */
+}
+
+.forgot-password {
+  color: grey;
+  font-size: small; /* Increased font size for better readability */
+  padding-bottom: 1rem; /* Added a bit more space below the link */
+}
+
+.login-btn {
+  background-color: limegreen;
+  border: none;
+  padding: 0.8rem 2.5rem; /* Increased padding for larger button */
+  color: white;
+  font-size: 1.2rem; /* Slightly increased font size for the button */
+  cursor: pointer;
+  border-radius: 5px; /* Made button corners rounder */
+}
+
+.login-btn:hover {
+  background-color: darkgreen; /* Darker color on hover */
+}
