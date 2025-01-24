@@ -6,7 +6,7 @@ import Home from "./components/Home/Home";
 import Login from "./components/Login/Login";
 import Register from "./components/Register/Register";
 import Contact from "./components/Contact/Contact";
-import LoginAdmin from "./components/LoginAdmin/LoginAdmin";
+//import LoginAdmin from "./components/LoginAdmin/LoginAdmin";
 // import Dashboard from './components/Dashboard/Dashboard';
 
 import AdminDashboard from "./components/AdminDashboard/AdminDashboard";
@@ -23,7 +23,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/login" element={<Login />} />
-        <Route path="/loginAdmin" element={<LoginAdmin />} />
+
         <Route path="/register" element={<Register />} />
         <Route path="/contact" element={<Contact />} />
         <Route path="/admin/dashboard" element={<AdminDashboard />} />
