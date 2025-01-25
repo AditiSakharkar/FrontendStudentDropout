@@ -1,109 +1,147 @@
-body {
-    font-family: Arial, sans-serif;
-    background-color: #f5f5f5;
-    margin: 0;
-    padding: 0;
-  }
-  
-  .dashboard {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 20px;
-  }
-  
-  header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 10px 0;
-    background-color: #333;
-    color: white;
-  }
-  
-  .sign-out {
-    background-color: #e53935;
-    color: white;
-    border: none;
-    padding: 5px 10px;
-    border-radius: 4px;
-    cursor: pointer;
-  }
-  
-  .search-filter {
-    display: flex;
-    justify-content: center;
-    margin: 20px 0;
-  }
-  
-  .search-filter input {
-    padding: 8px;
-    margin-right: 10px;
-    border-radius: 4px;
-    border: 1px solid #ccc;
-  }
-  
-  .search-filter button {
-    padding: 8px 12px;
-    margin-right: 10px;
-    background-color: #4caf50;
-    color: white;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-  }
-  
-  .active {
-    background-color: #81c784;
-  }
-  
-  .content {
-    display: flex;
-    justify-content: space-between;
-    gap: 20px;
-  }
-  
-  .user-profile {
-    flex: 1;
-    background: white;
-    border-radius: 8px;
-    padding: 20px;
-    text-align: center;
-    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
-  }
-  
-  .user-profile .profile-picture img {
-    width: 80px;
-    height: 80px;
-    border-radius: 50%;
-  }
-  
-  .applied-schemes {
-    flex: 2;
-    background: white;
-    border-radius: 8px;
-    padding: 20px;
-    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
-  }
-  
-  .scheme-item {
-    display: flex;
-    justify-content: space-between;
-    padding: 10px 0;
-    border-bottom: 1px solid #ddd;
-  }
-  
-  .scheme-item .status {
-    padding: 4px 8px;
-    border-radius: 4px;
-    font-size: 0.9em;
-  }
-  
-  .status.approved {
-    background-color: #4caf50;
-    color: white;
-  }
-  
-  .status.in-progress {
-    background-color: #ffeb3b;
-    color: black;
-  }
+.dashboard-container {
+  margin-top: 50px; /* Assuming there's a fixed header */
+  padding: 20px;
+  font-family: 'Arial', sans-serif;
+  background-color: #f4f4f4;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.profile-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: white;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  margin-bottom: 30px;
+  width: 100%;
+  max-width: 600px;
+}
+
+.profile-photo {
+  margin-bottom: 20px;
+}
+
+.profile-photo img {
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.profile-details {
+  font-size: 16px;
+  text-align: center;
+}
+
+.student-name {
+  font-size: 24px;
+  font-weight: bold;
+  margin: 0;
+  padding-bottom: 3px;
+}
+
+.student-name input,
+input[type="text"] {
+  font-size: 18px;
+  padding: 5px;
+  margin-top: 5px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  width: 250px;
+}
+
+.edit-btn {
+  margin-top: 7px;
+  padding: 5px 16px;
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+}
+
+.edit-btn:hover {
+  background-color: #45a049;
+}
+
+.details-section,
+.document-section,
+.status-section {
+  background-color: white;
+  padding: 20px;
+  margin-bottom: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 600px;
+}
+
+.details-section h3,
+.document-section h3,
+.status-section h3 {
+  margin-bottom: 15px;
+}
+
+.details-section p,
+.document-section p,
+.status-section p {
+  font-size: 16px;
+}
+
+.details-section button,
+.document-section button,
+.status-section button {
+  margin-top: 10px;
+  padding: 8px 16px;
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+}
+
+.details-section button:hover,
+.document-section button:hover,
+.status-section button:hover {
+  background-color: #45a049;
+}
+
+.button-section {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+  gap: 20px;
+}
+
+.main-btn {
+  padding: 8px 16px;
+  font-size: 16px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.browse-btn {
+  background-color: #008CBA;
+  color: white;
+}
+
+.applied-btn {
+  background-color: #f44336;
+  color: white;
+}
+
+.main-btn:hover {
+  opacity: 0.8;
+}
+
+.button-section .main-btn:active {
+  transform: scale(0.98);
+}
