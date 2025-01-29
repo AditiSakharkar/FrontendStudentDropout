@@ -2,6 +2,41 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
 const server="http://localhost:5000";
+export const studentLogin = createAsyncThunk(
+    "auth/studentLogin",
+    async (formData, { rejectWithValue }) => {
+      try {
+        const response = await axios.post(`${server}/api/auth/student/login`, formData, {
+          headers: {
+            "Content-Type": "application/json",
+          },
+          withCredentials: true,
+        });
+        console.log(response.data);
+        return response.data; // return the user data and token
+      } catch (error) {
+        return rejectWithValue(error.response?.data?.message || "Login failed");
+      }
+    }
+  );
+
+  export const adminLogin = createAsyncThunk(
+    "auth/adminLogin",
+    async (formData, { rejectWithValue }) => {
+      try {
+        const response = await axios.post(`${server}/api/auth/admin/login`, formData, {
+          headers: {
+            "Content-Type": "application/json",
+          },
+          withCredentials: true,
+        });
+        console.log(response.data);
+        return response.data; // return the admin data and token
+      } catch (error) {
+        return rejectWithValue(error.response?.data?.message || "Login failed");
+      }
+    }
+  );
 export const studentSignup = createAsyncThunk(
     "auth/studentSignup",
     async (formData, { rejectWithValue }) => {
@@ -45,6 +80,34 @@ const authslice = createSlice({
   },
   extraReducers: (builder) => {
     builder
+    .addCase(studentLogin.pending, (state) => {
+        state.loading = true;
+      })
+      .addCase(studentLogin.fulfilled, (state, action) => {
+        state.loading = false;
+        state.user = action.payload.user;
+        state.token = action.payload.token;
+        state.isAdmin = false; 
+        state.error = null;
+      })
+      .addCase(studentLogin.rejected, (state, action) => {
+        state.loading = false;
+        state.error = action.payload;
+      })
+      .addCase(adminLogin.pending, (state) => {
+        state.loading = true;
+      })
+      .addCase(adminLogin.fulfilled, (state, action) => {
+        state.loading = false;
+        state.user = action.payload.admin.email;
+        state.token = action.payload.token;
+        state.isAdmin = true;
+        state.error = null;
+      })
+      .addCase(adminLogin.rejected, (state, action) => {
+        state.loading = false;
+        state.error = action.payload;
+      })
     .addCase(studentSignup.pending, (state) => {
         state.loading = true;
       })
