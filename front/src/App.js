@@ -6,15 +6,12 @@ import Home from "./components/Home/Home";
 import Login from "./components/Login/Login";
 import Register from "./components/Register/Register";
 import Contact from "./components/Contact/Contact";
-//import LoginAdmin from "./components/LoginAdmin/LoginAdmin";
-// import Dashboard from './components/Dashboard/Dashboard';
-
 import AdminDashboard from "./components/AdminDashboard/AdminDashboard";
 import StudentDashboard from "./components/StudentDashboard/StudentDashboard";
-
-//forms
 import StudentForm from "./components/StudentForm/StudentForm";
 import CreateSchemeForm from "./components/CreateSchemeForm/CreateSchemeForm";
+import BrowseScheme from "./components/StudentDashboard/BrowseScheme"; // Add this import
+import AppliedSchemes from "./components/StudentDashboard/AppliedSchemes"; // Add this import
 
 function App() {
   return (
@@ -23,13 +20,15 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/login" element={<Login />} />
-
         <Route path="/register" element={<Register />} />
         <Route path="/contact" element={<Contact />} />
         <Route path="/admin/dashboard" element={<AdminDashboard />} />
         <Route path="/student/dashboard" element={<StudentDashboard />} />
         <Route path="/CreateSchemeForm" element={<CreateSchemeForm />} />
         <Route path="/StudentForm" element={<StudentForm />} />
+        <Route path="/BrowseScheme" element={<BrowseScheme />} /> {/* Added Route */}
+        <Route path="/AppliedSchemes" element={<AppliedSchemes />} /> {/* Added Route */}
+        
       </Routes>
       <Footer />
     </Router>

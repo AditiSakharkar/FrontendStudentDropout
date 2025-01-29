@@ -10,7 +10,7 @@ const StudentDashboard = () => {
   };
 
   const handleAppliedScheme = () => {
-    navigate('/AppliedScheme');
+    navigate('/AppliedSchemes');
   };
 
   return (

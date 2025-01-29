@@ -10,6 +10,13 @@ body {
     margin: 0 auto;
     padding: 20px;
   }
+  .dashboard {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+    margin-top: 60px; /* Added margin to make space for the header */
+  }
+  
   
   header {
     text-align: center;
@@ -17,6 +24,7 @@ body {
     color: white;
     padding: 10px 0;
   }
+  
   
   .search-filter {
     display: flex;
