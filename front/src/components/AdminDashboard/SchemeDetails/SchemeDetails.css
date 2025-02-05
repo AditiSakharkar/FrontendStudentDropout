@@ -1,0 +1,69 @@
+/* Body styles */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f9;
+    margin: 0;
+    padding: 0;
+  }
+  
+  /* Container with added space for predefined header */
+  .container {
+    width: 50%;
+    margin: 80px auto; /* Adjusted margin to leave space for the header */
+    padding: 20px;
+    background-color: white;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Header styles */
+  h1 {
+    text-align: center;
+    color: #333;
+  }
+  
+  /* Student list styles */
+  .student-list {
+    margin-top: 20px;
+    padding: 10px;
+    border-top: 2px solid #ccc;
+  }
+  
+  /* Each student item styling */
+  .student-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 8px 0; /* Reduced padding to decrease gap */
+    border-bottom: 1px solid #eee;
+  }
+  
+  /* Remove bottom border for the last student */
+  .student-item:last-child {
+    border-bottom: none;
+  }
+  
+  /* Button container styling */
+  .buttons {
+    display: flex;
+    gap: 10px; /* Reduced gap between buttons */
+  }
+  
+  /* Accept and Reject button styles */
+  .accept-btn,
+  .reject-btn {
+    padding: 8px 12px; /* Adjusted padding for smaller buttons */
+    border: none;
+    color: white;
+    cursor: pointer;
+    font-size: 14px;
+    border-radius: 5px;
+  }
+  
+  .accept-btn {
+    background-color: #4caf50;
+  }
+  
+  .reject-btn {
+    background-color: #f44336;
+  }
+  

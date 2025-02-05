@@ -8,7 +8,7 @@ const CreateSchemeForm = () => {
     eligibility: "",
     startDate: "",
     endDate: "",
-    benefits: "",
+    
     additionalInfo: "",
   });
 
@@ -78,14 +78,7 @@ const CreateSchemeForm = () => {
           required
         />
 
-        <label htmlFor="benefits">Benefits:</label>
-        <textarea
-          id="benefits"
-          name="benefits"
-          value={schemeData.benefits}
-          onChange={handleChange}
-          required
-        ></textarea>
+        
 
         <label htmlFor="additionalInfo">Additional Information:</label>
         <textarea

@@ -1,44 +1,44 @@
 /* src/components/CreateSchemeForm/CreateSchemeForm.css */
+
 .form-container {
   background-image: url('backgroundimg.jpg');
-  background-size: cover; /* Ensures the background image covers the entire screen */
+  background-size: cover;
   background-position: center;
-  background-attachment: fixed; /* Keeps the background fixed while scrolling */
-  height: 100vh; /* Ensures the container takes the full height of the viewport */
-  width: 100vw; /* Ensures the container takes the full width of the viewport */
+  background-attachment: fixed;
+  height: 100vh;
+  width: 100vw;
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center; /* Vertically centers the content */
-  padding: 20px;
+  justify-content: center;
+  padding: 10px;
   box-sizing: border-box;
   position: relative;
 }
 
 .form-title {
-  font-size: 2rem;
-  margin-bottom: 2rem;
+  font-size: 1.8rem;
+  margin-bottom: 1rem;
   color: white;
   text-align: center;
   width: 100%;
 }
 
 .scheme-form {
-  background-color: rgba(0, 0, 0, 0.6); /* Slight transparency for readability */
-  padding: 2rem;
-  border-radius: 10px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  width: 100%;
-  max-width: 700px; /* Ensures the form doesn't stretch too wide on larger screens */
-  margin: 0 auto;
+  background-color: rgba(0, 0, 0, 0.5);
+  padding: 1.5rem;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  width: 90%;
+  max-width: 600px;
   box-sizing: border-box;
 }
 
 .scheme-form label {
-  font-size: 1.1rem;
+  font-size: 1rem;
   color: #fff;
-  font-weight: 600;
-  margin-bottom: 8px;
+  font-weight: 500;
+  margin-bottom: 6px;
   display: block;
 }
 
@@ -46,9 +46,9 @@
 .scheme-form select,
 .scheme-form textarea {
   width: 100%;
-  padding: 0.8rem;
-  margin-bottom: 1rem;
-  font-size: 1.1rem;
+  padding: 0.5rem;
+  margin-bottom: 0.8rem;
+  font-size: 1rem;
   color: #333;
   background-color: #fff;
   border: none;
@@ -60,65 +60,66 @@
 .scheme-form select:focus,
 .scheme-form textarea:focus {
   border-color: #28a745;
-  box-shadow: 0 0 5px rgba(40, 167, 69, 0.5);
+  box-shadow: 0 0 4px rgba(40, 167, 69, 0.5);
 }
 
 .submit-button {
   background-color: limegreen;
   border: none;
-  padding: 1rem 2.5rem;
+  padding: 0.9rem 2rem;
   color: white;
-  font-size: 1.2rem;
+  font-size: 1rem;
   font-weight: bold;
   cursor: pointer;
   border-radius: 5px;
   text-align: center;
   width: 100%;
-  margin-top: 1.5rem;
+  margin-top: 1rem;
 }
 
 .submit-button:hover {
   background-color: darkgreen;
 }
 
-/* New styling for date fields side by side */
+/* Side-by-side date fields */
 .date-fields {
   display: flex;
-  gap: 15px;
+  gap: 10px;
 }
 
 .date-fields input {
-  width: 48%; /* Ensures each input takes up roughly half the available space */
+  width: 48%;
 }
 
 @media (max-width: 768px) {
   .form-container {
-    padding: 15px;
+    padding: 10px;
   }
 
   .scheme-form {
-    padding: 1.5rem;
+    padding: 1.2rem;
+    max-width: 500px;
   }
 
   .form-title {
     font-size: 1.5rem;
-    margin-bottom: 1.5rem;
+    margin-bottom: 1.2rem;
   }
 
   .scheme-form label {
-    font-size: 1rem;
+    font-size: 0.95rem;
   }
 
   .scheme-form input,
   .scheme-form select,
   .scheme-form textarea {
-    font-size: 1rem;
-    padding: 0.75rem;
+    font-size: 0.95rem;
+    padding: 0.65rem;
   }
 
   .submit-button {
-    padding: 1rem 2rem;
-    font-size: 1.1rem;
+    padding: 0.8rem 1.5rem;
+    font-size: 0.95rem;
   }
 }
 
@@ -128,15 +129,20 @@
     margin-bottom: 1rem;
   }
 
+  .scheme-form {
+    padding: 1rem;
+    max-width: 90%;
+  }
+
   .scheme-form input,
   .scheme-form select,
   .scheme-form textarea {
-    font-size: 0.95rem;
-    padding: 0.7rem;
+    font-size: 0.9rem;
+    padding: 0.6rem;
   }
 
   .submit-button {
-    padding: 0.9rem 1.8rem;
-    font-size: 1rem;
+    padding: 0.7rem 1.2rem;
+    font-size: 0.9rem;
   }
 }

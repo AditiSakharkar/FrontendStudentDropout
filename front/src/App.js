@@ -12,6 +12,9 @@ import StudentForm from "./components/StudentForm/StudentForm";
 import CreateSchemeForm from "./components/CreateSchemeForm/CreateSchemeForm";
 import BrowseScheme from "./components/StudentDashboard/BrowseScheme"; // Add this import
 import AppliedSchemes from "./components/StudentDashboard/AppliedSchemes"; // Add this import
+import AdminBrowseScheme from "./components/AdminDashboard/AdminBrowseScheme";
+import SchemeDetails from "./components/AdminDashboard/SchemeDetails/SchemeDetails";
+
 
 function App() {
   return (
@@ -28,6 +31,8 @@ function App() {
         <Route path="/StudentForm" element={<StudentForm />} />
         <Route path="/BrowseScheme" element={<BrowseScheme />} /> {/* Added Route */}
         <Route path="/AppliedSchemes" element={<AppliedSchemes />} /> {/* Added Route */}
+        <Route path="/AdminBrowseScheme" element={<AdminBrowseScheme />} /> {/* Added Route */}
+        <Route path="/SchemeDetails" element={<SchemeDetails />} /> {/* Added Route */}
         
       </Routes>
       <Footer />
