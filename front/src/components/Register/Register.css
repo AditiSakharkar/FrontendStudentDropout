@@ -34,6 +34,18 @@
   font-size: 1.1rem; /* Increased font size inside input fields */
 }
 
+.register input {
+  width: 340px; /* Updated width to match the button width */
+  padding: 0.8rem;
+  margin: 0.8rem 0;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+  background-color: #fff;
+  color: #333;
+  font-size: 1.1rem;
+}
+
+
 .register input:focus {
   outline: none;
   border-color: limegreen;
@@ -63,3 +75,5 @@
   width: 320px; /* Ensures all links have the same width */
   font-size: 1.1rem; /* Increased font size of the link for better visibility */
 }
+
+

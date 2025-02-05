@@ -11,62 +11,63 @@ function Dashboard() {
     { id: 1, schemeName: 'Scheme 2', studentName: 'Student A' },
     { id: 2, schemeName: 'Scheme 2', studentName: 'Student B' },
   ]);
+  const [newScheme, setNewScheme] = useState({ schemeName: '', studentName: '' });
 
   const handleApprove = (id) => {
-    console.log('Approve request:', id);
+    console.log('Approved request:', id);
   };
 
   const handleReject = (id) => {
-    console.log('Reject request:', id);
+    console.log('Rejected request:', id);
   };
 
-  const handleSubmitScheme = (scheme) => {
-    console.log('New scheme added:', scheme);
+  const handleSubmitScheme = () => {
+    if (newScheme.schemeName && newScheme.studentName) {
+      setRequests([
+        ...requests,
+        { id: requests.length + 1, schemeName: newScheme.schemeName, studentName: newScheme.studentName },
+      ]);
+      setNewScheme({ schemeName: '', studentName: '' });  // Reset the form after adding
+    }
   };
 
-   // Use the setSearchQuery or searchQuery somewhere
-   const handleSearch = (event) => {
-    setSearchQuery(event.target.value); // Use setSearchQuery here
+  const handleSearch = (event) => {
+    setSearchQuery(event.target.value);
   };
 
-  // Use setRequests to update the state
-  const addRequest = () => {
-    setRequests([...requests, { id: requests.length + 1, name: 'New Request' }]);
+  const handleSchemeChange = (e) => {
+    const { name, value } = e.target;
+    setNewScheme((prev) => ({
+      ...prev,
+      [name]: value,
+    }));
   };
-
 
   return (
     <div className="dashboard">
-      <header>
-        <h1>SHIKSHA SETU - Student Portal</h1>
-      </header>
       <SearchFilter
-        onSearch={setSearchQuery}
+        onSearch={handleSearch}
         selectedFilter={selectedFilter}
         setSelectedFilter={setSelectedFilter}
       />
+
       <div className="dashboard-content">
         <SchemeRequests
-          requests={requests}
+          requests={requests.filter((request) =>
+            request.schemeName.toLowerCase().includes(searchQuery.toLowerCase())
+          )}
           onApprove={handleApprove}
           onReject={handleReject}
         />
-        <SchemeEditor onSubmit={handleSubmitScheme} />
+
+        <SchemeEditor
+          onSubmit={handleSubmitScheme}
+          newScheme={newScheme}
+          onChange={handleSchemeChange}
+        />
       </div>
 
-      <h1>Admin Dashboard</h1>
-      <input
-        type="text"
-        value={searchQuery}
-        onChange={handleSearch}
-        placeholder="Search..."
-      />
-      <button onClick={addRequest}>Add Request</button>
-      <ul>
-        {requests.map((request) => (
-          <li key={request.id}>{request.name}</li>
-        ))}
-      </ul>
+
     </div>
   );
 }

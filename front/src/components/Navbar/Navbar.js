@@ -22,9 +22,9 @@ function Navbar() {
         </div>
       </nav>
 
-      <div className="scrolling-text">
+      {/* <div className="scrolling-text">
         <p>Shiksha-Setu aims to reduce dropout rates by providing a centralized platform for support and new schemes, helping students overcome challenges and creating a more inclusive educational environment.</p>
-      </div>
+      </div> */}
     </div>
   );
 }
