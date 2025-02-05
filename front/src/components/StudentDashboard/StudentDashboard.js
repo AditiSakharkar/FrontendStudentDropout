@@ -13,6 +13,10 @@ const StudentDashboard = () => {
     navigate('/AppliedSchemes');
   };
 
+  const handleApplyScheme = () => {
+    navigate('/Fulldetails');
+  };
+
   return (
     <div className="dashboard-container">
 
@@ -47,6 +51,9 @@ const StudentDashboard = () => {
         </button>
         <button className="edit-btn" onClick={handleBrowseScheme}>
           Browse Scheme
+        </button>
+        <button className="edit-btn" onClick={handleApplyScheme}>
+          Apply Scheme
         </button>
        
       </div>

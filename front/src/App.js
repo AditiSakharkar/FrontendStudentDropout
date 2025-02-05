@@ -10,8 +10,9 @@ import AdminDashboard from "./components/AdminDashboard/AdminDashboard";
 import StudentDashboard from "./components/StudentDashboard/StudentDashboard";
 import StudentForm from "./components/StudentForm/StudentForm";
 import CreateSchemeForm from "./components/CreateSchemeForm/CreateSchemeForm";
-import BrowseScheme from "./components/StudentDashboard/BrowseScheme"; // Add this import
 import AppliedSchemes from "./components/StudentDashboard/AppliedSchemes"; // Add this import
+import BrowseScheme from "./components/StudentDashboard/BrowseScheme"; // Add this import
+import Fulldetails from "./components/StudentDashboard/Fulldetails/Fulldetails"; // Add this import
 import AdminBrowseScheme from "./components/AdminDashboard/AdminBrowseScheme";
 import SchemeDetails from "./components/AdminDashboard/SchemeDetails/SchemeDetails";
 
@@ -33,6 +34,7 @@ function App() {
         <Route path="/AppliedSchemes" element={<AppliedSchemes />} /> {/* Added Route */}
         <Route path="/AdminBrowseScheme" element={<AdminBrowseScheme />} /> {/* Added Route */}
         <Route path="/SchemeDetails" element={<SchemeDetails />} /> {/* Added Route */}
+        <Route path="/Fulldetails" element={<Fulldetails />} /> {/* Added Route */}
         
       </Routes>
       <Footer />
