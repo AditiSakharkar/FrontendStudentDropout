@@ -3,8 +3,13 @@ import SearchFilter from './SearchFilter';
 import SchemeRequests from './SchemeRequests';
 import SchemeEditor from './SchemeEditor';
 import './Dashboard.css';
+import { useDispatch, useSelector } from "react-redux";
+import { studentSignup } from "../../redux/slices/authslice.js";
+import { toast } from "react-hot-toast";
 
 function Dashboard() {
+  const dispatch = useDispatch();
+  const { message, stateerror } = useSelector((state) => state.auth);
   const [searchQuery, setSearchQuery] = useState('');
   const [selectedFilter, setSelectedFilter] = useState('all');
   const [requests, setRequests] = useState([

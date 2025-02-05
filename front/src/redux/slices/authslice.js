@@ -1,6 +1,7 @@
 
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
+import { useSelector } from "react-redux";
 const server="http://localhost:5000";
 export const studentLogin = createAsyncThunk(
     "auth/studentLogin",
@@ -56,7 +57,23 @@ export const studentSignup = createAsyncThunk(
     }
   );
   
+  export const getAllSchemes = createAsyncThunk(
+    "auth/getAll", 
+    async (args ,{ rejectWithValue }) => {
+      try {
+       
 
+        const response = await axios.get(`${server}/api/scheme/getallschemes`, {
+          
+          withCredentials: true, // Include cookies if needed
+        });
+        console.log(response.data.schemes[0])
+        return response.data;
+      } catch (error) {
+        return rejectWithValue(error.response?.data?.message || "Failed to fetch schemes");
+      }
+    }
+  );
 
 
 
@@ -89,6 +106,7 @@ const authslice = createSlice({
         state.token = action.payload.token;
         state.isAdmin = false; 
         state.error = null;
+        console.log(state.user,state.token)
       })
       .addCase(studentLogin.rejected, (state, action) => {
         state.loading = false;
@@ -121,7 +139,19 @@ const authslice = createSlice({
         state.loading = false;
         state.error = action.payload;
       })
-
+      .addCase(getAllSchemes.pending, (state) => {
+                  state.loading = true;
+                })
+                .addCase(getAllSchemes.fulfilled, (state, action) => {
+                  state.loading = false;
+                  state.schemes = action.payload.schemes;
+                   console.log(state.schemes)
+                  state.error = null;
+                })
+                .addCase(getAllSchemes.rejected, (state, action) => {
+                  state.loading = false;
+                  state.error = action.payload;
+                });
       
      
   },

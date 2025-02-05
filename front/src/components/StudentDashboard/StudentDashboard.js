@@ -1,12 +1,26 @@
 //import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import './Dashboard.css';
+import { useDispatch, useSelector } from "react-redux";
+import { getAllSchemes } from "../../redux/slices/authslice.js";
+import { toast } from "react-hot-toast";
+
 
 const StudentDashboard = () => {
+  const { user, loading, error ,isAdmin,token} = useSelector((state) => state.auth);
+  const dispatch=useDispatch();
   const navigate = useNavigate();
+ 
+  const handleBrowseScheme =async () => {
+   
+    let schemeresult = await dispatch(getAllSchemes());
+    if(schemeresult.type === 'auth/getAll/fulfilled'){
 
-  const handleBrowseScheme = () => {
-    navigate('/BrowseScheme');
+      navigate('/BrowseScheme');
+    }
+    else{
+       toast.error("An unexpected error occurred.");  
+    }
   };
 
   const handleAppliedScheme = () => {
@@ -26,12 +40,12 @@ const StudentDashboard = () => {
         <div className="profile-details">
           <div className="student-name">
          
-              <span>John Doe</span>
+              <span>{user.email}</span>
           </div>
           <p>
             <strong>Email: </strong>{' '}
             
-              'johndoe@gmail.com'
+              {user.email}
           </p>
           <p><strong>Applied Schemes: </strong>3</p>
 
