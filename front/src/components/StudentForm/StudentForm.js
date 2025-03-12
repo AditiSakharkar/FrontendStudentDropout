@@ -1,109 +1,59 @@
-import React, { useState } from "react";
+import React from "react";
+import { useNavigate, useParams } from "react-router-dom";
+import { useSelector, useDispatch } from "react-redux";
+import { studentapply } from "../../redux/slices/authslice.js";
+import { toast } from "react-hot-toast";
 import "./StudentForm.css";
 
 const EnrollmentForm = () => {
-  const [formData, setFormData] = useState({
-    name: "",
-    email: "",
-    phone: "",
-    dob: "",
-    scheme: "",
-    address: "",
-    comments: "",
-  });
+  const navigate=useNavigate();
+  const dispatch = useDispatch();
+  const { schemeId } = useParams(); // Get schemeId from URL params
+  const { schemes, user } = useSelector((state) => state.auth);
+  
+  const scheme = schemes.find((scheme) => scheme._id === schemeId); // Find the selected scheme
+  const application = user.applications.find((app) => app.scheme === schemeId); // Find if the student applied
 
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    setFormData((prevData) => ({
-      ...prevData,
-      [name]: value,
-    }));
+  const handlesubmit = async () => {
+    try {
+      let formData = { schemeId: scheme._id };
+
+      const result = await dispatch(studentapply(formData));
+      if (result.type === studentapply.fulfilled.type) {
+        toast.success("Application successful!");
+        navigate("/student/dashboard")
+      } else if (result.type === studentapply.rejected.type) {
+        toast.error(result.payload || "Application failed!");
+      }
+    } catch (error) {
+      toast.error("An unexpected error occurred.");
+      console.error(error);
+    }
   };
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    console.log("Form Data Submitted:", formData);
-    alert("Your enrollment request has been submitted successfully!");
-  };
+  if (!scheme) {
+    return <div>Scheme not found.</div>; // If the scheme doesn't exist in the store
+  }
 
   return (
-    <div className="form-container">
-      <h2 className="form-title">Scheme Enrollment Form</h2>
-      <form className="enrollment-form" onSubmit={handleSubmit}>
-        <label htmlFor="name">Full Name:</label>
-        <input
-          type="text"
-          id="name"
-          name="name"
-          value={formData.name}
-          onChange={handleChange}
-          required
-        />
+    <div className="container">
+      <h1>{scheme.title}</h1>
+      <h2>Details of the Scheme</h2>
+      <div className="scheme-info">
+        <p>
+          <strong>Scheme ID:</strong> {scheme._id}
+        </p>
+        <p>
+          <strong>Description:</strong> {scheme.description}
+        </p>{" "}
+        {/* Assuming your scheme has a description */}
+      </div>
 
-        <label htmlFor="email">Email:</label>
-        <input
-          type="email"
-          id="email"
-          name="email"
-          value={formData.email}
-          onChange={handleChange}
-          required
-        />
-
-        <label htmlFor="phone">Phone Number:</label>
-        <input
-          type="tel"
-          id="phone"
-          name="phone"
-          value={formData.phone}
-          onChange={handleChange}
-          required
-        />
-
-        <label htmlFor="dob">Date of Birth:</label>
-        <input
-          type="date"
-          id="dob"
-          name="dob"
-          value={formData.dob}
-          onChange={handleChange}
-          required
-        />
-
-        <label htmlFor="scheme">Select Scheme:</label>
-        <select
-          id="scheme"
-          name="scheme"
-          value={formData.scheme}
-          onChange={handleChange}
-          required
-        >
-          <option value="">--Choose a Scheme--</option>
-          <option value="Scholarship">Scholarship</option>
-          <option value="Internship">Internship</option>
-          <option value="Skill Development">Skill Development</option>
-          <option value="Financial Aid">Financial Aid</option>
-        </select>
-
-        <label htmlFor="address">Address:</label>
-        <textarea
-          id="address"
-          name="address"
-          value={formData.address}
-          onChange={handleChange}
-          required
-        ></textarea>
-
-        <label htmlFor="comments">Additional Comments:</label>
-        <textarea
-          id="comments"
-          name="comments"
-          value={formData.comments}
-          onChange={handleChange}
-        ></textarea>
-
-        <button type="submit" className="submit-button">Submit</button>
-      </form>
+      {application ? (
+        <p><strong>Application Status:</strong> {application.status}</p> 
+      ) : (
+        <button type="submit" onClick={handlesubmit}>Apply</button>
+      )}
     </div>
   );
 };

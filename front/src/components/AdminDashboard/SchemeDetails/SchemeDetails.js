@@ -1,47 +1,67 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+import { useParams, useNavigate } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
 import './SchemeDetails.css';
+import { getparticular_student_details, getparticular_schemenames } from '../../../redux/slices/authslice';
 
 const SchemeDetails = () => {
-  const students = [
-    'Student 1',
-    'Student 2',
-    'Student 3',
-    'Student 4',
-    'Student 5',
-  ];
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
+  const { schemeId } = useParams();
+  const { scheme_details } = useSelector((state) => state.auth);
 
-  const handleAccept = (student) => {
-    console.log(`${student} Accepted`);
+  useEffect(() => {
+    // 🔹 Re-fetch scheme details to update the status
+    dispatch(getparticular_schemenames(schemeId));
+  }, [dispatch, schemeId]); // Runs when schemeId changes
+
+  const students = scheme_details ? scheme_details.appliedUsers : [];
+
+  const handledetails = async (studentId) => {
+    await dispatch(getparticular_student_details(studentId)).unwrap();
+    navigate(`/StudentDetails/${studentId}`);
   };
 
-  const handleReject = (student) => {
-    console.log(`${student} Rejected`);
-  };
+  if (!scheme_details) {
+    return <div>Scheme not found.</div>;
+  }
 
   return (
     <div className="container">
-      <h1>Scheme name</h1>
-      <div className="student-list">
-        {students.map((student, index) => (
-          <div className="student-item" key={index}>
-            <span>{student}</span>
-            <div className="buttons">
-              <button
-                className="accept-btn"
-                onClick={() => handleAccept(student)}
-              >
-                Accept
-              </button>
-              <button
-                className="reject-btn"
-                onClick={() => handleReject(student)}
-              >
-                Reject
-              </button>
-            </div>
-          </div>
-        ))}
+      <h1>{scheme_details.title}</h1>
+      <h2>Details of the Scheme</h2>
+      <div className="scheme-info">
+        <p><strong>Scheme ID:</strong> {scheme_details._id}</p>
+        <p><strong>Description:</strong> {scheme_details.description}</p>
       </div>
+
+      <h3>Students Applied:</h3>
+      <table className="student-table">
+        <thead>
+          <tr>
+            <th>Student ID</th>
+            <th>Applied At</th>
+            <th>Status</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          {students.map((student, index) => (
+            <tr key={index}>
+              <td>{student.user}</td>
+              <td>{new Date(student.appliedAt).toLocaleDateString()}</td>
+              <td>{student.status}</td>
+              <td>
+                <button 
+                  className="details-btn"
+                  onClick={() => handledetails(student.user)}>
+                  Student application Details
+                </button>
+              </td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
     </div>
   );
 };

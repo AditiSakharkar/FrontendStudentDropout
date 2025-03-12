@@ -1,10 +1,8 @@
-
-
-
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import './Dashboard.css';
 import { useDispatch, useSelector } from "react-redux";
+import { getschemenames } from "../../redux/slices/authslice.js";
 import { studentSignup } from "../../redux/slices/authslice.js";
 import { toast } from "react-hot-toast";
 
@@ -12,14 +10,24 @@ function Dashboard() {
   const dispatch = useDispatch();
   const { message, stateerror } = useSelector((state) => state.auth);
   const navigate = useNavigate();
+  const handleBrowseScheme =async () => {
+   
+    let schemeresult = await dispatch(getschemenames());
+    if(schemeresult.type === 'auth/getAllnames/fulfilled'){
 
+      navigate('/AdminBrowseScheme');
+    }
+    else{
+       toast.error("An unexpected error occurred.");  
+    }
+  };
   return (
     <div className="dashboard">
       <h1>Admin Dashboard</h1>
 
       <div className="admin-buttons">
         <button onClick={() => navigate('/CreateSchemeForm')}>New Scheme Release</button>
-        <button onClick={() => navigate('/AdminBrowseScheme')}>Browse Old Scheme</button>
+        <button onClick={handleBrowseScheme}>Browse Previous Schemes</button>
       </div>
     </div>
   );

@@ -51,7 +51,7 @@ const StudentDashboard = () => {
             
               {user.email}
           </p>
-          <p><strong>Applied Schemes: </strong>3</p>
+          <p><strong>Applied Schemes: </strong>{user.applications.length}</p>
 
           {/* <p><strong>Applied Schemes: </strong>3</p>
         <button className="edit-btn">View Applied Schemes</button> */}
@@ -61,14 +61,12 @@ const StudentDashboard = () => {
       {/* Button Section */}
       <div className="button-section">
       <button className="edit-btn" onClick={handleAppliedScheme}>
-          View Applied Scheme
+          View Applied Schemes
         </button>
         <button className="edit-btn" onClick={handleBrowseScheme}>
           Browse Scheme
         </button>
-        <button className="edit-btn" onClick={handleApplyScheme}>
-          Apply Scheme
-        </button>
+       
        
       </div>
          

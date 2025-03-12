@@ -1,5 +1,5 @@
 .browse-container {
-  margin-top: 60px; /* Added top margin */
+  margin-top: 60px;
   padding: 20px;
   font-family: 'Arial', sans-serif;
   background-color: #f4f4f4;
@@ -20,25 +20,34 @@ h2 {
   margin-bottom: 20px;
 }
 
-.scheme-list {
-  width: 100%;
-  max-width: 500px;
-}
-
-.scheme-item {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+.scheme-table {
+  width: 80%;
+  max-width: 800px;
+  border-collapse: collapse;
   background: white;
-  padding: 15px;
-  margin-bottom: 10px;
   border-radius: 5px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
 }
 
-.scheme-item span {
-  flex: 1; /* Ensures the scheme name takes available space */
-  margin-right: 90px; /* Adds space between the name and button */
+.scheme-table th,
+.scheme-table td {
+  padding: 12px;
+  border: 1px solid #ddd;
+  text-align: left;
+}
+
+.scheme-table th {
+  background-color: #4CAF50;
+  color: white;
+}
+
+.scheme-table tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+.scheme-table tr:hover {
+  background-color: #f1f1f1;
 }
 
 .apply-btn {

@@ -1,0 +1,58 @@
+.container {
+    width: 60%;
+    margin: 80px auto;
+    padding: 30px;
+    background-color: white;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    border-radius: 10px;
+    text-align: left; /* Ensures all text is left-aligned */
+    font-family: 'Arial', sans-serif;
+  }
+  
+  h1, h2, h4 {
+    color: #333;
+    font-weight: 500;
+    margin-bottom: 15px;
+    text-align: left !important; /* Forces text to be left-aligned */
+  }
+  
+  h1 {
+    font-size: 24px;
+  }
+  
+  h2 {
+    font-size: 20px;
+  }
+  
+  h4 {
+    font-size: 18px;
+    font-weight: bold;
+    margin-top: 20px;
+  }
+  
+  button {
+    padding: 12px 18px;
+    margin: 20px 10px 0 0;
+    border: none;
+    font-size: 16px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: 0.3s ease;
+    font-weight: bold;
+  }
+  
+  .accept-btn {
+    background-color: #4CAF50;
+    color: white;
+  }
+  
+  .reject-btn {
+    background-color: #f44336;
+    color: white;
+  }
+  
+  button:hover {
+    opacity: 0.9;
+    transform: scale(1.05);
+  }
+  

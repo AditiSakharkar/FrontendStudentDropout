@@ -21,7 +21,7 @@ function Login() {
     try {
       let loginResult;
 
-      if (role === 'student') {
+     if (role === 'student') {
         loginResult = await dispatch(studentLogin({ email, password }));
       } else if (role === 'admin') {
         loginResult = await dispatch(adminLogin({ email, password })); 
@@ -29,9 +29,11 @@ function Login() {
 
       if (loginResult.type === 'auth/studentLogin/fulfilled' || loginResult.type === 'auth/adminLogin/fulfilled') {
         toast.success('Login successful!');
-        // Optionally, navigate to the dashboard based on the role
-        console.log(user);
-         navigate(isAdmin ? '/admin/dashboard' : '/student/dashboard');
+        
+        const loggedInUser = loginResult.payload?.user; // ✅ Get user from login response
+        console.log(loggedInUser); 
+      
+        navigate(loggedInUser?.role === 'admin' ? '/admin/dashboard' : '/student/dashboard');
       } else {
         toast.error(loginResult.payload || "Login failed!");
       }

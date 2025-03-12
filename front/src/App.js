@@ -15,6 +15,7 @@ import BrowseScheme from "./components/StudentDashboard/BrowseScheme"; // Add th
 import Fulldetails from "./components/StudentDashboard/Fulldetails/Fulldetails"; // Add this import
 import AdminBrowseScheme from "./components/AdminDashboard/AdminBrowseScheme";
 import SchemeDetails from "./components/AdminDashboard/SchemeDetails/SchemeDetails";
+import Student_Applicationdetails from "./components/Student_applicationdetails/Student_Applicationdetails";
 
 
 function App() {
@@ -29,11 +30,12 @@ function App() {
         <Route path="/admin/dashboard" element={<AdminDashboard />} />
         <Route path="/student/dashboard" element={<StudentDashboard />} />
         <Route path="/CreateSchemeForm" element={<CreateSchemeForm />} />
-        <Route path="/StudentForm" element={<StudentForm />} />
+        <Route path="/StudentForm/:schemeId" element={<StudentForm />} />
         <Route path="/BrowseScheme" element={<BrowseScheme />} /> {/* Added Route */}
         <Route path="/AppliedSchemes" element={<AppliedSchemes />} /> {/* Added Route */}
         <Route path="/AdminBrowseScheme" element={<AdminBrowseScheme />} /> {/* Added Route */}
-        <Route path="/SchemeDetails" element={<SchemeDetails />} /> {/* Added Route */}
+        <Route path="/SchemeDetails/:schemeId" element={<SchemeDetails />} /> {/* Added Route */}
+        <Route path="/Studentdetails/:studentId" element={<Student_Applicationdetails />} /> {/* Added Route */}
         <Route path="/Fulldetails" element={<Fulldetails />} /> {/* Added Route */}
         
       </Routes>

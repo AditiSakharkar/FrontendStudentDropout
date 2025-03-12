@@ -9,11 +9,15 @@ const BrowseScheme = () => {
   const [searchTerm, setSearchTerm] = useState('');
   
   const ss = Array.from({ length: 10 }, (_, i) => `Scheme ${i + 1}`);
-  const {schemes}=useSelector((state)=>state.auth);
+  const {schemes,user}=useSelector((state)=>state.auth);
+  const applications=user.applications;
   console.log(schemes)
+  const filtredschemes=schemes.filter(scheme=>
+    !applications.some(app => app.scheme === scheme._id)
+  );
 
-  const handleApply = () => {
-    navigate('/StudentForm');
+  const handleApply = (schemeId) => {
+    navigate(`/StudentForm/${schemeId}`);
   };
 
   return (
@@ -27,8 +31,8 @@ const BrowseScheme = () => {
         onChange={(e) => setSearchTerm(e.target.value)}
       />
       <div className="scheme-list">
-      {schemes?.length > 0 ? (
-          schemes
+      {filtredschemes?.length > 0 ? (
+          filtredschemes
             .filter(scheme => scheme.title.toLowerCase().includes(searchTerm.toLowerCase()))
             .map((scheme) => (
               <div key={scheme._id} className="scheme-item">
