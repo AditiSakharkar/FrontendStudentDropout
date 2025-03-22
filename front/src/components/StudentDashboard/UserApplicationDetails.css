@@ -1,0 +1,79 @@
+/* Container Styling */
+.container {
+    text-transform: capitalize;
+    width: 60%;
+    margin: 65px auto;
+    padding: 30px;
+    background-color: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    
+  }
+  
+  /* Header Styling */
+  h1, h2, h4 {
+    color: #333; 
+    text-transform: 'capitalize';
+  }
+  
+  h1 {
+    font-size: 2rem;
+  }
+  
+  h2 {
+    font-size: 1.4rem;
+    margin-bottom: 10px;
+  }
+  
+  h4 {
+    font-size: 1.2rem;
+    margin-top: 20px;
+  }
+  
+  /* Paragraph Styling */
+  p {
+    font-size: 1rem;    
+    text-transform: capitalize;
+  }
+  
+  /* Remove Bullet Points */
+  ul {
+    list-style-type: none;
+    padding: 0;
+    margin-top: 10px;
+  }
+  
+  li {
+    margin-bottom: 10px;
+  }
+  
+  /* Document Link Styling */
+  .document-link {
+    color: #007bff;
+    text-decoration: none;
+    font-weight: 500;
+  }
+  
+  .document-link:hover {
+    text-decoration: underline;
+  }
+  .emailstudent{
+    text-transform: lowercase;
+  }
+  /* Button Styling */
+  .back-btn {
+    margin-top: 20px;
+    padding: 12px 24px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .back-btn:hover {
+    background-color: #0056b3;
+  }
+  

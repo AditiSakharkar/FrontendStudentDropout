@@ -34,7 +34,17 @@ const SchemeDetails = () => {
         <p><strong>Scheme ID:</strong> {scheme_details._id}</p>
         <p><strong>Description:</strong> {scheme_details.description}</p>
       </div>
-
+      {/* Display Required Documents */}
+      <h3>Required Documents:</h3>
+      {scheme_details.documents && scheme_details.documents.length > 0 ? (
+        <ul>
+          {scheme_details.documents.map((doc, index) => (
+            <li key={index}>{doc}</li>
+          ))}
+        </ul>
+      ) : (
+        <p>No documents specified.</p>
+      )}
       <h3>Students Applied:</h3>
       <table className="student-table">
         <thead>

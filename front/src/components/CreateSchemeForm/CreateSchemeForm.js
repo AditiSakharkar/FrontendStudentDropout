@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import "./CreateSchemeForm.css";
-import { useDispatch ,useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { releasescheme } from "../../redux/slices/authslice.js";
 import { toast } from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
@@ -9,50 +9,63 @@ const CreateSchemeForm = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const { message, stateerror } = useSelector((state) => state.auth);
-  const [formData, setformData] = useState({
+
+  const [formData, setFormData] = useState({
     title: "",
     description: "",
     eligibilityCriteria: "",
-    
-    lastDateOfSubmission: ""
-    
-    
+    lastDateOfSubmission: "",
+    documents: [], // List of required documents
   });
+
+  const [documentInput, setDocumentInput] = useState("");
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-    setformData((prevData) => ({
+    setFormData((prevData) => ({
       ...prevData,
       [name]: value,
     }));
   };
 
-  const handleSubmit = async(e) => {
-    e.preventDefault();
-    
-     // Dispatch the signup action
-        try {
-          const result = await dispatch(releasescheme(
-            formData
-          ));
-    
-          if (result.type === releasescheme.fulfilled.type) {
-            
-            toast.success('Scheme released successfully!');
-            navigate("/admin/dashboard")
+  const handleAddDocument = () => {
+    if (documentInput.trim() !== "") {
+      setFormData((prevData) => ({
+        ...prevData,
+        documents: [...prevData.documents, documentInput.trim()],
+      }));
+      setDocumentInput(""); // Clear input field
+    }
+  };
 
-          } else if (result.type === releasescheme.rejected.type) {
-            toast.error(result.payload || "Some error occured!");
-          }
-        } catch (error) {
-          toast.error("An unexpected error occurred.");
-          console.error(error);
-        }
+  const handleRemoveDocument = (index) => {
+    setFormData((prevData) => ({
+      ...prevData,
+      documents: prevData.documents.filter((_, i) => i !== index),
+    }));
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    try {
+      const result = await dispatch(releasescheme(formData));
+
+      if (result.type === releasescheme.fulfilled.type) {
+        toast.success("Scheme released successfully!");
+        navigate("/admin/dashboard");
+      } else if (result.type === releasescheme.rejected.type) {
+        toast.error(result.payload || "Some error occurred!");
+      }
+    } catch (error) {
+      toast.error("An unexpected error occurred.");
+      console.error(error);
+    }
   };
 
   return (
     <div className="form-container">
-      <h2 className="form-title">Create New Scheme</h2>
+      <h2 className="form-title">Release New Scheme</h2>
       <form className="scheme-form" onSubmit={handleSubmit}>
         <label htmlFor="schemeName">Scheme Name:</label>
         <input
@@ -70,6 +83,7 @@ const CreateSchemeForm = () => {
           name="description"
           value={formData.description}
           onChange={handleChange}
+          rows="2"
           required
         ></textarea>
 
@@ -79,20 +93,11 @@ const CreateSchemeForm = () => {
           name="eligibilityCriteria"
           value={formData.eligibilityCriteria}
           onChange={handleChange}
+          rows="2"
           required
         ></textarea>
-      { 
-       /* <label htmlFor="startDate">Start Date:</label>
-        <input
-          type="date"
-          id="startDate"
-          name="startDate"
-          value={schemeData.startDate}
-          onChange={handleChange}
-          required
-        />*/}
 
-        <label htmlFor="endDate">End Date:</label>
+        <label htmlFor="endDate">Last Date of Submission:</label>
         <input
           type="date"
           id="endDate"
@@ -102,17 +107,40 @@ const CreateSchemeForm = () => {
           required
         />
 
-        
-{/* <label htmlFor="additionalInfo">Additional Information:</label>
-        <textarea
-          id="additionalInfo"
-          name="additionalInfo"
-          value={schemeData.additionalInfo}
-          onChange={handleChange}
-        ></textarea>*/}
-        
+        {/* Add Documents Input */}
+        <label htmlFor="documents">Required Documents:</label>
+        <div className="documents-container">
+          <input
+            type="text"
+            id="documents"
+            value={documentInput}
+            onChange={(e) => setDocumentInput(e.target.value)}
+            placeholder="Enter document name"
+          />
+          <button type="button" onClick={handleAddDocument}>
+            Add
+          </button>
+        </div>
 
-        <button type="submit" className="submit-button">Create Scheme</button>
+        {/* Display Added Documents */}
+        <ul className="documents-list">
+          {formData.documents.map((doc, index) => (
+            <li key={index}>
+              {doc}{" "}
+              <button
+                type="button"
+                className="remove-button"
+                onClick={() => handleRemoveDocument(index)}
+              >
+                Remove
+              </button>
+            </li>
+          ))}
+        </ul>
+
+        <button type="submit" className="submit-button">
+          Create Scheme
+        </button>
       </form>
     </div>
   );

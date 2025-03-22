@@ -24,18 +24,7 @@
 }
 
 .register input {
-  width: 320px; /* Increased width of the input fields */
-  padding: 0.8rem; /* Increased padding for better touch targets */
-  margin: 0.8rem 0; /* Increased margin between input fields */
-  border-radius: 4px;
-  border: 1px solid #ccc;
-  background-color: #fff;
-  color: #333;
-  font-size: 1.1rem; /* Increased font size inside input fields */
-}
-
-.register input {
-  width: 340px; /* Updated width to match the button width */
+  width: 320px; /* Ensures all inputs have the same width */
   padding: 0.8rem;
   margin: 0.8rem 0;
   border-radius: 4px;
@@ -43,16 +32,28 @@
   background-color: #fff;
   color: #333;
   font-size: 1.1rem;
+  display: block; /* Ensures uniform display */
+}
+.register input[type="text"], 
+.student-name input[type="text"] {
+  font-size: 18px !important;
+  padding: 0.7rem!important;
+  border: 1px solid #ccc !important;
+  border-radius: 4px !important;
+  width: 340px !important;
+  background-color: #fff !important;
+  color: #333 !important;
 }
 
 
 .register input:focus {
   outline: none;
-  border-color: limegreen;
+  border-color: #007bff; /* Blue color on focus */
+  box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
 }
 
 .register-btn {
-  background-color: limegreen;
+  background-color: #007bff; /* Blue color scheme */
   border: none;
   padding: 0.8rem 2.5rem; /* Increased padding for a larger button */
   color: white;
@@ -60,15 +61,16 @@
   cursor: pointer;
   margin-top: 1.5rem; /* Added more space above the button */
   border-radius: 5px; /* Slightly rounded button edges */
-  width: 340px;  /* Ensures buttons are the same width */
+  width: 370px;  /* Ensures buttons are the same width */
+  transition: background-color 0.3s ease-in-out;
 }
 
 .register-btn:hover {
-  background-color: darkgreen;
+  background-color: #0056b3; /* Darker blue on hover */
 }
 
 .register a {
-  color: limegreen;
+  color: #007bff; /* Blue color for links */
   text-decoration: none;
   margin-top: 1.5rem; /* Added more spacing above the link */
   text-align: center;
@@ -76,4 +78,15 @@
   font-size: 1.1rem; /* Increased font size of the link for better visibility */
 }
 
+.register a:hover {
+  text-decoration: underline;
+}
 
+/* Responsive Design */
+@media (max-width: 600px) {
+  .register input,
+  .register-btn,
+  .register a {
+    width: 90%; /* Adjust to fit smaller screens */
+  }
+}

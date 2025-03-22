@@ -21,6 +21,8 @@
   padding: 0.8rem; /* Increased padding for better touch target */
   margin: 0.8rem 0; /* Slightly increased margin between input fields */
   font-size: 1.1rem; /* Increased font size inside input fields */
+  border: 1px solid #ccc;
+  border-radius: 5px;
 }
 
 .forgot-password {
@@ -30,15 +32,27 @@
 }
 
 .login-btn {
-  background-color: limegreen;
+  background-color: #007bff; /* Blue color scheme */
   border: none;
   padding: 0.8rem 2.5rem; /* Increased padding for larger button */
   color: white;
   font-size: 1.2rem; /* Slightly increased font size for the button */
   cursor: pointer;
   border-radius: 5px; /* Made button corners rounder */
+  transition: background-color 0.3s ease-in-out;
 }
 
 .login-btn:hover {
-  background-color: darkgreen; /* Darker color on hover */
+  background-color: #0056b3; /* Darker blue on hover */
+}
+
+/* Responsive Design */
+@media (max-width: 600px) {
+  .login input {
+    width: 90%;
+  }
+
+  .login-btn {
+    width: 90%;
+  }
 }

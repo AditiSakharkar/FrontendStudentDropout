@@ -38,6 +38,7 @@ const AdminBrowseScheme = () => {
           {schemesnames?.length > 0 ? (
             schemesnames
               .filter(scheme => scheme.title.toLowerCase().includes(searchTerm.toLowerCase()))
+              .reverse()
               .map((scheme) => (
                 <tr key={scheme._id}>
                   <td>{scheme._id}</td>

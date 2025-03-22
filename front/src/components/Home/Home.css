@@ -1,35 +1,58 @@
 /* src/components/Home/Home.css */
 .home {
-  background-image: url('backgroundimg.jpg'); /* Ensure the image path is correct */
+  background-image: url('backgroundimg.jpg'); 
   background-size: cover;
   background-position: center;
+  background-attachment: fixed;
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center; /* Centers content vertically */
+  justify-content: center; 
+  margin-top: 0px;
   height: 100vh;
   color: white;
-  padding-top: 0; /* Remove top padding */
+  text-align: center;
 }
 
 .home h2 {
-  font-size: 3rem; /* Increased font size for more prominence */
-  margin-bottom: 2rem; /* Increased space below the heading */
-  text-align: center; /* Centers the heading */
+  font-size: 3.5rem;
+  margin-top: 0px;
+  margin-bottom: 2.5rem;
+  font-weight: 700;
+  color: rgba(255, 255, 255, 0.85);
+  text-shadow: 1px 2px 4px rgba(0, 0, 0, 0.4);
 }
 
+/* Options Styling */
 .home-btn {
-  background-color: rgba(255, 255, 255, 0.8);
+  background-color: rgba(255, 255, 255, 0.9); /* Slightly grayer background */
   border: none;
-  padding: 1rem 3rem; /* Increased padding to make buttons bigger */
-  margin: 1rem 0; /* Increased margin for spacing between buttons */
+  padding: 1rem 3rem;
+  margin: 1rem 0;
   cursor: pointer;
-  font-size: 1.2rem; /* Increased font size for better visibility */
-  width: 320px; /* Ensures buttons are the same width */
-  border-radius: 5px; /* Adds rounded corners */
-  transition: background-color 0.3s ease;
+  font-size: 1.2rem;
+  font-weight: 500; /* Reduced font weight */
+  width: 350px;
+  border-radius: 8px;
+  color: #004080;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+  transition: all 0.3s ease;
 }
 
 .home-btn:hover {
-  background-color: rgba(255, 255, 255, 0.6); /* Slightly darker background on hover */
+  background-color: rgba(180, 180, 180, 0.9); /* Darker gray on hover */
+  color: #003366;
+  transform: translateY(-2px);
+}
+
+/* Responsive Design for Smaller Screens */
+@media (max-width: 600px) {
+  .home h2 {
+    font-size: 2.5rem;
+  }
+
+  .home-btn {
+    width: 100%;
+    padding: 1rem;
+  }
 }

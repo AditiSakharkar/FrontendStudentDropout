@@ -13,22 +13,49 @@
 }
 
 .contact h3 {
-  font-size: 2rem; /* Increased font size for heading */
+  font-size: 2rem;
 }
 
 .contact input,
 .contact textarea {
-  width: 320px; /* Slightly increased width */
-  padding: 0.75rem; /* Increased padding */
-  margin: 0.75rem 0; /* Increased margin for more space */
+  width: 320px;
+  padding: 0.75rem;
+  margin: 0.75rem 0;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+  font-size: 1.1rem;
+  color: #333;
+  background-color: #fff;
+  transition: border-color 0.3s ease;
+}
+
+.contact input:focus,
+.contact textarea:focus {
+  outline: none;
+  border-color: #007bff; /* Blue focus border */
+  box-shadow: 0 0 8px rgba(0, 123, 255, 0.3); /* Subtle blue glow */
 }
 
 .submit-btn {
-  background-color: green;
+  background-color: #007bff; /* Subtle blue color */
   border: none;
-  padding: 0.75rem 3rem; /* Increased padding for bigger button */
+  padding: 0.75rem 3rem;
   color: white;
-  font-size: 1.2rem; /* Slightly increased font size */
+  font-size: 1.2rem;
   cursor: pointer;
-  border-radius: 4px; /* Optional rounded corners */
+  border-radius: 4px;
+  transition: background-color 0.3s ease-in-out;
+}
+
+.submit-btn:hover {
+  background-color: #0056b3; /* Darker blue on hover */
+}
+
+/* Responsive Design */
+@media (max-width: 600px) {
+  .contact input,
+  .contact textarea,
+  .submit-btn {
+    width: 90%; /* Adjust width for smaller screens */
+  }
 }

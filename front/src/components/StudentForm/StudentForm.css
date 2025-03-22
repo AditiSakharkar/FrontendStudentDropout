@@ -1,142 +1,89 @@
-/* StudentForm.css */
-.form-container {
-  background-image: url('backgroundimg.jpg'); /* Set the background image */
-  background-size: cover; /* Ensures the background image covers the entire screen */
-  background-position: center;
-  background-attachment: fixed; /* Keeps the background fixed during scrolling */
-  height: 100vh; /* Ensures the container takes full height */
-  width: 100vw; /* Ensures the container takes full width */
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center; /* Centers the form vertically and horizontally */
-  padding: 20px;
-  box-sizing: border-box;
-  position: relative;
-}
-
-.form-title {
-  font-size: 2rem;
-  margin-bottom: 2rem;
-  color: white;
-  text-align: center;
-  width: 100%;
-}
-
-.enrollment-form {
-  background-color: rgba(0, 0, 0, 0.6); /* Slight transparency for readability */
-  padding: 2rem;
+/* Scoped to EnrollmentForm only */
+.enrollment-container {
+  text-transform: capitalize;
+  max-width: 800px;
+  margin: 80px auto;
+  padding: 30px;
+  background-color: #f0f8ff; /* Subtle blue background */
   border-radius: 10px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  width: 100%;
-  max-width: 700px; /* Ensures the form doesn't stretch too wide */
-  margin: 0 auto;
-  box-sizing: border-box;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+  font-family: 'Arial', sans-serif;
+  text-align: center;
 }
 
-.enrollment-form label {
-  font-size: 1.1rem;
-  color: #fff;
-  font-weight: 600;
-  margin-bottom: 8px;
-  display: block;
+.enrollment-container h1 {
+  color: #004080;
+  font-size: 2rem;
+  margin-bottom: 10px;
 }
 
-.enrollment-form input,
-.enrollment-form select,
-.enrollment-form textarea {
-  width: 100%;
-  padding: 0.8rem;
-  margin-bottom: 1rem;
+.enrollment-container h2 {
+  color: #0056b3;
+  font-size: 1.5rem;
+  margin-bottom: 20px;
+}
+
+/* Scheme information */
+.enrollment-container .scheme-info {
+  text-align: left;
+  background-color: white;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+  margin-bottom: 20px;
+}
+
+.enrollment-container .scheme-info p {
   font-size: 1.1rem;
   color: #333;
-  background-color: #fff;
-  border: none;
-  border-radius: 5px;
-  box-sizing: border-box;
+  margin-bottom: 10px;
 }
 
-.enrollment-form input:focus,
-.enrollment-form select:focus,
-.enrollment-form textarea:focus {
-  border-color: #28a745;
-  box-shadow: 0 0 5px rgba(40, 167, 69, 0.5);
+.enrollment-container .scheme-info strong {
+  color: #004080;
 }
 
-.submit-button {
-  background-color: limegreen;
-  border: none;
-  padding: 1rem 2.5rem;
+/* Button styling */
+.enrollment-container button {
+  background-color: #0073e6;
   color: white;
-  font-size: 1.2rem;
-  font-weight: bold;
-  cursor: pointer;
+  padding: 12px 20px;
+  font-size: 1rem;
+  border: none;
   border-radius: 5px;
-  text-align: center;
-  width: 100%;
-  margin-top: 1.5rem;
+  cursor: pointer;
+  transition: background 0.3s ease;
 }
 
-.submit-button:hover {
-  background-color: darkgreen;
+.enrollment-container button:hover {
+  background-color: #005bb5;
 }
 
-/* New styling for date fields side by side */
-.date-fields {
-  display: flex;
-  gap: 15px;
+/* Application status message */
+.enrollment-container p strong {
+  color: #008000;
+  font-size: 1.2rem;
 }
 
-.date-fields input {
-  width: 48%;
-}
-
+/* Responsive adjustments */
 @media (max-width: 768px) {
-  .form-container {
+  .enrollment-container {
+    padding: 20px;
+  }
+
+  .enrollment-container h1 {
+    font-size: 1.8rem;
+  }
+
+  .enrollment-container h2 {
+    font-size: 1.3rem;
+  }
+
+  .enrollment-container .scheme-info {
     padding: 15px;
   }
 
-  .enrollment-form {
-    padding: 1.5rem;
-  }
-
-  .form-title {
-    font-size: 1.5rem;
-    margin-bottom: 1.5rem;
-  }
-
-  .enrollment-form label {
-    font-size: 1rem;
-  }
-
-  .enrollment-form input,
-  .enrollment-form select,
-  .enrollment-form textarea {
-    font-size: 1rem;
-    padding: 0.75rem;
-  }
-
-  .submit-button {
-    padding: 1rem 2rem;
-    font-size: 1.1rem;
-  }
-}
-
-@media (max-width: 480px) {
-  .form-title {
-    font-size: 1.3rem;
-    margin-bottom: 1rem;
-  }
-
-  .enrollment-form input,
-  .enrollment-form select,
-  .enrollment-form textarea {
-    font-size: 0.95rem;
-    padding: 0.7rem;
-  }
-
-  .submit-button {
-    padding: 0.9rem 1.8rem;
-    font-size: 1rem;
+  .enrollment-container button {
+    width: 100%;
   }
 }

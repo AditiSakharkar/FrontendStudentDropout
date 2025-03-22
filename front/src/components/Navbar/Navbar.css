@@ -1,73 +1,98 @@
-/* src/components/Navbar/Navbar.css */
+/* Navbar Styles */
 .navbar {
-  position: fixed; /* Fix navbar at the top */
+  position:fixed;
   top: 0;
   left: 0;
   width: 100%;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background-color: rgba(51, 51, 51, 0.8); /* Transparent background for overlap effect */
+  background-color: rgba(34, 34, 34, 0.9); /* Slightly darker for better visibility */
   color: white;
-  padding: 0 1rem; /* Adjusted padding to ensure more space */
-  z-index: 1000; /* Ensures the navbar stays above other content */
-  box-sizing: border-box; /* Ensure padding doesn't affect width */
+  padding: 4px 15px; /* Increased padding for a balanced layout */
+  z-index: 1000;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2); /* Soft shadow for depth */
+  box-sizing: border-box;
 }
 
+/* Navbar Title */
 .navbar h1 {
-  font-size: 1.5rem; /* Increased font size for better visibility */
+  font-size: 1.7rem;
+  font-weight: 600; /* Slightly bolder for prominence */
+  letter-spacing: 0.5px;
+  color:white;  
 }
 
+/* Navbar Buttons */
 .nav-buttons {
   display: flex;
-  gap: 10px; /* Space between buttons */
-  flex-wrap: wrap; /* Ensure buttons wrap to the next line if necessary */
+  gap: 12px;
+  flex-wrap: wrap;
 }
 
 .nav-buttons button {
-  padding: 8px 15px; /* Increased padding for bigger buttons */
-  background-color: #444;
+  padding: 10px 18px;
+  background-color: #555; /* Darker button background */
   color: white;
   border: none;
   cursor: pointer;
-  font-size: 1rem; /* Ensure readable font size */
-  border-radius: 5px; /* Rounded button edges */
-  transition: background-color 0.3s ease;
+  font-size: 1rem;
+  font-weight: 500;
+  border-radius: 6px;
+  transition: all 0.3s ease;
 }
 
 .nav-buttons button:hover {
-  background-color: #555;
+  background-color: #666;
+  transform: translateY(-2px); /* Slight lift effect */
 }
 
-
-
-/* Scrolling Text Container */
+/* Scrolling Text Styles */
 .scrolling-text {
-  background-color: #333; /* Dark background for contrast */
-  color: white; /* White text color */
-  padding: 10px 0; /* Vertical padding */
-  width: 100%; /* Ensure it stretches across the width of the page */
-  position: absolute; /* Make it fixed below the navbar */
-  top: 60px; /* Adjust this value depending on the height of your navbar */
+  background-color: #222; /* Darker for contrast */
+  color: white;
+  padding: 12px 0;
+  width: 100%;
+  position: absolute;
+  top: 60px;
   left: 0;
-  display: flex;
-  justify-content: center; /* Center the text horizontally */
-  overflow: hidden; /* Hide the content that overflows */
+  overflow: hidden;
+  font-weight: 500;
+  letter-spacing: 0.5px;
 }
 
+/* Scrolling Animation */
 .scrolling-text p {
-  white-space: nowrap; /* Prevent text from wrapping */
+  white-space: nowrap;
   margin: 0;
-  padding-left: 100%; /* Initially place the text outside the view */
-  animation: scroll-left 10s linear infinite; /* Animate the text from right to left */
-  font-size: 1.2rem; /* Font size */
+  padding-left: 100%;
+  font-size: 1.2rem;
+  animation: scroll-left 15s linear infinite; /* Slower and smoother */
 }
 
 @keyframes scroll-left {
   from {
-    transform: translateX(100%); /* Start the text from outside the screen */
+    transform: translateX(100%);
   }
   to {
-    transform: translateX(-100%); /* End the text outside the other side of the screen */
+    transform: translateX(-100%);
+  }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .navbar {
+    flex-direction: column;
+    align-items: center;
+    padding: 15px;
+  }
+
+  .nav-buttons {
+    justify-content: center;
+    margin-top: 8px;
+  }
+
+  .scrolling-text p {
+    font-size: 1rem;
   }
 }

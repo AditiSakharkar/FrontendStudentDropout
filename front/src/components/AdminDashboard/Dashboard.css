@@ -1,3 +1,4 @@
+/* src/components/AdminDashboard/Dashboard.css */
 .dashboard {
   display: flex;
   flex-direction: column;
@@ -5,6 +6,14 @@
   justify-content: center;
   height: 100vh;
   box-sizing: border-box;
+  background-color: #f0f4f8; /* Light blue background */
+  color: #333;
+}
+
+.dashboard h1 {
+  font-size: 2.5rem;
+  color: #0056b3; /* Slightly darker blue for contrast */
+  margin-bottom: 40px;
 }
 
 .admin-buttons {
@@ -17,13 +26,26 @@
   padding: 12px 24px;
   font-size: 16px;
   border: none;
-  background-color: #007bff;
+  background-color: #007bff; /* Primary blue */
   color: white;
   cursor: pointer;
-  border-radius: 5px;
-  transition: background-color 0.3s;
+  border-radius: 8px;
+  transition: background-color 0.3s ease;
+  font-weight: 600;
 }
 
 .admin-buttons button:hover {
-  background-color: #0056b3;
+  background-color: #0056b3; /* Darker blue on hover */
+}
+
+/* For Smaller Screens */
+@media (max-width: 600px) {
+  .admin-buttons {
+    flex-direction: column;
+    gap: 15px;
+  }
+
+  .admin-buttons button {
+    width: 100%;
+  }
 }

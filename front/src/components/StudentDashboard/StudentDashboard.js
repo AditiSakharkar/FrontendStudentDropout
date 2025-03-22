@@ -4,10 +4,11 @@ import './Dashboard.css';
 import { useDispatch, useSelector } from "react-redux";
 import { getAllSchemes } from "../../redux/slices/authslice.js";
 import { toast } from "react-hot-toast";
-
+import { getparticular_student_details} from '../../redux/slices/authslice.js';
 
 const StudentDashboard = () => {
   const { user, loading, error ,isAdmin,token} = useSelector((state) => state.auth);
+  console.log(user);
   const dispatch=useDispatch();
   const navigate = useNavigate();
  
@@ -23,13 +24,14 @@ const StudentDashboard = () => {
     }
   };
 
-  const handleAppliedScheme = () => {
+  const handleAppliedScheme = async() => {
+    await dispatch(getparticular_student_details(user._id)).unwrap();
     navigate('/AppliedSchemes');
   };
 
-  const handleApplyScheme = () => {
-    navigate('/Fulldetails');
-  };
+  const handlepersonaldetails=()=>{
+    navigate("/Fulldetails");
+  }
 
   return (
     <div className="dashboard-container">
@@ -44,10 +46,10 @@ const StudentDashboard = () => {
         <div className="profile-details">
           <div className="student-name">
          
-              <span>{user.email}</span>
+              <span>{user.name}</span>
           </div>
-          <p>
-            <strong>Email: </strong>{' '}
+          <p className="emailstudent">
+            <strong >Email: </strong>{' '}
             
               {user.email}
           </p>
@@ -66,39 +68,18 @@ const StudentDashboard = () => {
         <button className="edit-btn" onClick={handleBrowseScheme}>
           Browse Scheme
         </button>
-       
+        <button className="edit-btn" onClick={handlepersonaldetails}>
+          Personal Details
+        </button>
        
       </div>
          
         </div>
       </div>
 
-      
-      {/* Personal Details Section */}
-      <div className="details-section">
-        <h3>Personal Details</h3>
-        <p><strong>Name: </strong>John Doe</p>
-        <p><strong>Droupout year: </strong>2024</p>
-        <p><strong>Date of Birth: </strong>01/01/2000</p>
-        
-        <button className="edit-btn">Edit Details</button>
-      </div>
+     
 
 
-      {/* Document Section */}
-      <div className="document-section">
-        <h3>Documents</h3>
-        <input type="file" />
-        {/* <button className="edit-btn">Upload Document</button> */}
-        <button className="edit-btn">verify Documents</button>
-      </div>
-
-      {/* Status Section
-      <div className="status-section">
-        <h3>Status</h3>
-        <p><strong>Applied Schemes: </strong>3</p>
-        <button className="edit-btn">View Applied Schemes</button>
-      </div> */}
 
     </div>
   );

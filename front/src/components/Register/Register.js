@@ -1,10 +1,12 @@
 import React, { useState } from 'react';
 import './Register.css';
 import { useDispatch, useSelector } from "react-redux";
+import { useNavigate } from 'react-router-dom';
 import { studentSignup } from "../../redux/slices/authslice.js";
 import { toast } from "react-hot-toast";
 
 function Register() {
+  const navigate=useNavigate();
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -35,6 +37,8 @@ function Register() {
       if (result.type === studentSignup.fulfilled.type) {
         
         toast.success('Registration successful!');
+        navigate("/");
+        
       } else if (result.type === studentSignup.rejected.type) {
         toast.error(result.payload || "Registration failed!");
       }
@@ -46,7 +50,7 @@ function Register() {
 
   return (
     <div className="register">
-      <h3>REGISTER PAGE</h3>
+      <h3>REGISTER YOURSELF</h3>
       <form onSubmit={handleSubmit}>
         <input
           type="text"

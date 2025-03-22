@@ -3,7 +3,8 @@ import { useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { approveorreject } from '../../redux/slices/authslice';
 import toast from 'react-hot-toast';
-import './studentapplication.css'
+import './studentapplication.css';
+
 const StudentApplicationDetails = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
@@ -17,6 +18,7 @@ const StudentApplicationDetails = () => {
 
   const application = student_details.applications?.find(app => app.scheme === scheme_details._id);
   const isPending = application?.status === 'pending';
+  const documentLinks = application?.documentLinks || {};
 
   const handleDecision = async (status) => {
     try {
@@ -40,6 +42,20 @@ const StudentApplicationDetails = () => {
       <h2>Application Status: {application?.status || 'N/A'}</h2>
 
       <h4>Documents</h4>
+      {Object.keys(documentLinks).length > 0 ? (
+        <ul>
+          {Object.entries(documentLinks).map(([docName, link], index) => (
+            <li key={index}>
+              {docName}:&nbsp;
+              <a href={link} target="_blank" rel="noopener noreferrer" className="document-link">
+                View Document
+              </a>
+            </li>
+          ))}
+        </ul>
+      ) : (
+        <p>No documents submitted.</p>
+      )}
 
       {isPending && (
         <div>
