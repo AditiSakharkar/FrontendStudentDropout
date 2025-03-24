@@ -11,3 +11,17 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+/* src/index.css or src/App.css */
+body, html {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  height: 100%;
+}
+
+.app-content {
+  min-height: calc(100vh - 70px); /* Ensures it takes up at least the full height minus the footer */
+  display: flex;
+  flex-direction: column;
+}
+

@@ -1,58 +1,102 @@
+/* Container Styling */
 .container {
-    width: 60%;
-    margin: 80px auto;
-    padding: 30px;
-    background-color: white;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    border-radius: 10px;
-    text-align: left; /* Ensures all text is left-aligned */
-    font-family: 'Arial', sans-serif;
-  }
+  width: 60%;
+  margin: 80px auto;
+  padding: 30px;
+  background-color: #ffffff;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+  font-family: 'Arial', sans-serif;
+  text-transform: capitalize;
+}
+
+/* Heading Styles */
+h1, h4 {
+  color: #0056b3; /* Dark Blue */
+  font-weight: 500;
+  margin-bottom: 15px;
+}
+
+h1 {
+  font-size: 28px;
+}
+
+h4 {
+  font-size: 20px;
+  font-weight: bold;
+  margin-top: 20px;
+}
+
+/* Section Styling */
+.section-container {
+  margin-bottom: 30px;
+  border-bottom: 1px solid #99c2e8; /* Light Blue Border */
+  padding-bottom: 20px;
+}
+
+.section-container:last-child {
+  border-bottom: none;
+}
+
+/* Education Card */
+.education-card {
+  background-color: #eef6fc; /* Light Blue */
+  padding: 15px;
+  margin-top: 10px;
+  border-radius: 8px;
+  border: 1px solid #99c2e8; /* Light Blue Border */
+}
+
+/* Links Styling */
+a.resume-link,
+a.document-link {
+  color: #007bff; /* Primary Blue */
+  text-decoration: none;
+  font-weight: bold;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+/* Button Styling */
+button {
+  padding: 12px 18px;
+  margin-top: 20px;
+  border: none;
+  font-size: 16px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: 0.3s ease;
+  font-weight: bold;
+  background-color: #007bff; /* Primary Blue */
+  color: white;
+}
+
+button:hover {
+  background-color: #0056b3; /* Darker Blue */
+  transform: scale(1.05);
+  opacity: 0.9;
+}
+
+/* Loading Text */
+#loading-text {
+  font-size: 18px;
+  color: #e67e22; /* Orange */
+}
+.accept-btn{
+  margin: 10px;
+  background-color: rgb(24, 186, 24);
+}
+.accept-btn:hover{
   
-  h1, h2, h4 {
-    color: #333;
-    font-weight: 500;
-    margin-bottom: 15px;
-    text-align: left !important; /* Forces text to be left-aligned */
-  }
-  
-  h1 {
-    font-size: 24px;
-  }
-  
-  h2 {
-    font-size: 20px;
-  }
-  
-  h4 {
-    font-size: 18px;
-    font-weight: bold;
-    margin-top: 20px;
-  }
-  
-  button {
-    padding: 12px 18px;
-    margin: 20px 10px 0 0;
-    border: none;
-    font-size: 16px;
-    border-radius: 8px;
-    cursor: pointer;
-    transition: 0.3s ease;
-    font-weight: bold;
-  }
-  
-  .accept-btn {
-    background-color: #4CAF50;
-    color: white;
-  }
-  
-  .reject-btn {
-    background-color: #f44336;
-    color: white;
-  }
-  
-  button:hover {
-    opacity: 0.9;
-    transform: scale(1.05);
-  }
-  
+  background-color: rgb(6, 87, 6);
+}
+.reject-btn{
+  margin: 10px;
+  background-color: red;
+}
+.reject-btn:hover{
+ 
+  background-color: rgb(137, 12, 12);
+}

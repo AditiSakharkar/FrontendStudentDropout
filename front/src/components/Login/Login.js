@@ -2,7 +2,7 @@
 import React, { useState } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import { studentLogin ,adminLogin} from '../../redux/slices/authslice';
+import { studentLogin ,adminLogin,getparticular_student_details} from '../../redux/slices/authslice';
 import { toast } from 'react-hot-toast';
 import './Login.css';
 
@@ -32,6 +32,9 @@ function Login() {
         
         const loggedInUser = loginResult.payload?.user; // ✅ Get user from login response
         console.log(loggedInUser); 
+        if (loggedInUser?.role === 'student') {
+          await dispatch(getparticular_student_details(loggedInUser._id)); 
+        }
       
         navigate(loggedInUser?.role === 'admin' ? '/admin/dashboard' : '/student/dashboard');
       } else {

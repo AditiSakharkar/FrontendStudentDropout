@@ -1,16 +1,16 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import './Browse.css';
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 
 const BrowseScheme = () => {
   const navigate = useNavigate();
   const [searchTerm, setSearchTerm] = useState('');
 
-  const { schemes, user } = useSelector((state) => state.auth);
-  const applications = user.applications;
+  const { schemes, student_details } = useSelector((state) => state.auth);
+  const applications = student_details?.applications || [];
 
-  const filtredschemes = schemes?.filter(scheme =>
+  const filteredSchemes = schemes?.filter(scheme =>
     !applications.some(app => app.scheme === scheme._id)
   );
 
@@ -28,7 +28,7 @@ const BrowseScheme = () => {
         value={searchTerm}
         onChange={(e) => setSearchTerm(e.target.value)}
       />
-      {filtredschemes?.length > 0 ? (
+      {filteredSchemes?.length > 0 ? (
         <table className="scheme-table">
           <thead>
             <tr>
@@ -39,9 +39,9 @@ const BrowseScheme = () => {
             </tr>
           </thead>
           <tbody>
-            {filtredschemes
+            {filteredSchemes
               .filter(scheme => scheme.title.toLowerCase().includes(searchTerm.toLowerCase()))
-              .map((scheme) => (
+              .reverse().map((scheme) => (
                 <tr key={scheme._id}>
                   <td>{scheme.title}</td>
                   <td>{scheme.description}</td>

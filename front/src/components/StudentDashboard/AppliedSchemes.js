@@ -1,19 +1,26 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "./AppliedSchemes.css";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { getparticular_schemenames } from '../../redux/slices/authslice';
 
 const AppliedSchemes = () => {
+  const dispatch = useDispatch();
   const navigate = useNavigate();
   const [searchTerm, setSearchTerm] = useState("");
-  const { user } = useSelector((state) => state.auth);
-  const schemes = user.applications;
-  console.log(schemes);
+
+  const { student_details } = useSelector((state) => state.auth);
+  const schemes = student_details?.applications || [];
 
   const filteredSchemes = schemes.filter((scheme) =>
     scheme.scheme.toString().includes(searchTerm) || 
     scheme._id.toString().includes(searchTerm)
   );
+
+  const handledetails = async (schemeId) => {
+    await dispatch(getparticular_schemenames(schemeId)).unwrap();
+    navigate(`/userapplicationschemedetails/${schemeId}`);
+  };
 
   return (
     <div className="applied-schemes-container">
@@ -41,7 +48,7 @@ const AppliedSchemes = () => {
             </tr>
           </thead>
           <tbody>
-            {filteredSchemes.map((scheme) => (
+            {filteredSchemes.reverse().map((scheme) => (
               <tr key={scheme._id}>
                 <td>{scheme.scheme}</td>
                 <td>{scheme.schemename}</td>
@@ -54,7 +61,7 @@ const AppliedSchemes = () => {
                 <td>
                   <button
                     className="scheme-btn"
-                    onClick={() => navigate(`/userapplicationschemedetails/${scheme.scheme}`)}
+                    onClick={() => handledetails(scheme.scheme)}
                   >
                     Show Details
                   </button>

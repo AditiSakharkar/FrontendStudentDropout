@@ -1,100 +1,148 @@
-/* Body styles */
-body {
-  font-family: Arial, sans-serif;
-  background-color: #f4f4f9;
-  margin: 0;
-  padding: 0;
-}
-
-/* Container with added space for predefined header */
-.container {
+/* Container with a unique class to prevent conflicts */
+.scheme-details-container {
   width: 80%;
   max-width: 1000px;
   margin: 80px auto;
   padding: 20px;
-  background-color: white;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  border-radius: 8px;
+  background-color: #ffffff;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+  font-family: 'Arial', sans-serif;
+  text-transform: capitalize;
 }
 
-/* Header styles */
-h1 {
+/* Header Styles */
+.scheme-details-header {
   text-align: center;
+  color: #0056b3; /* Dark Blue */
+  margin-bottom: 20px;
+}
+
+/* Scheme Information Section */
+.scheme-info {
+  background-color: #eef6fc; /* Light Blue */
+  padding: 20px;
+  border-radius: 8px;
+  margin-bottom: 20px;
+  border: 1px solid #99c2e8; /* Light Blue Border */
+}
+
+.scheme-info p {
+  margin: 8px 0;
+  font-size: 14px;
+}
+
+.scheme-info strong {
+  color: #0056b3; /* Dark Blue */
+}
+
+/* Section Titles */
+.scheme-section-title {
+  color: #0056b3;
+  font-size: 18px;
+  margin-bottom: 10px;
+}
+
+/* Documents List */
+.scheme-documents-list {
+  list-style-type: none;
+  padding: 0;
+}
+
+.scheme-documents-list li {
+  background-color: #e1ecf7; /* Very Light Blue */
+  margin-bottom: 8px;
+  padding: 8px;
+  border-radius: 5px;
   color: #333;
 }
 
-/* Student list styles */
-.student-list {
-  margin-top: 20px;
-  padding: 10px;
-  border-top: 2px solid #ccc;
-}
-
-/* Table styling */
-.student-table {
+/* Student Table */
+.scheme-student-table {
   width: 100%;
   border-collapse: collapse;
   margin-top: 20px;
+  background-color: white;
 }
 
-.student-table th, .student-table td {
-  border: 1px solid #ddd;
-  padding: 10px;
+.scheme-student-table th,
+.scheme-student-table td {
+  border: 1px solid #99c2e8; /* Light Blue Border */
+  padding: 12px;
   text-align: center;
+  font-size: 14px;
 }
 
-.student-table th {
-  background-color: #007bff;
+.scheme-student-table th {
+  background-color: #0056b3; /* Dark Blue */
   color: white;
-  font-weight: bold;
 }
 
-.student-table tr:nth-child(even) {
-  background-color: #f9f9f9;
+.scheme-student-table tr:nth-child(even) {
+  background-color: #e1ecf7; /* Light Blue Alternate Rows */
 }
 
-.student-table tr:hover {
-  background-color: #f1f1f1;
+.scheme-student-table tr:hover {
+  background-color: #d0e3f0; /* Hover Color */
 }
 
-/* Each student item styling */
-.student-item {
+/* Buttons */
+.scheme-action-buttons {
   display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 8px 0;
-  border-bottom: 1px solid #eee;
-}
-
-/* Remove bottom border for the last student */
-.student-item:last-child {
-  border-bottom: none;
-}
-
-/* Button container styling */
-.buttons {
-  display: flex;
+  justify-content: center;
+  margin-top: 20px;
   gap: 10px;
 }
 
-/* Button styles */
-.accept-btn, .reject-btn, .details-btn {
-  padding: 8px 12px;
+.scheme-details-btn,
+.scheme-accept-btn,
+.scheme-reject-btn {
+  padding: 10px 15px;
+  border-radius: 8px;
   border: none;
-  color: white;
   cursor: pointer;
   font-size: 14px;
-  border-radius: 5px;
+  color: white;
+  transition: background-color 0.3s ease;
 }
 
-.details-btn {
-  background-color: blue;
+/* Button Colors */
+.scheme-details-btn {
+  background-color: #007bff; /* Primary Blue */
 }
 
-.accept-btn {
-  background-color: #4caf50;
+.scheme-accept-btn {
+  background-color: #4caf50; /* Green */
 }
 
-.reject-btn {
-  background-color: #f44336;
+.scheme-reject-btn {
+  background-color: #f44336; /* Red */
+}
+
+/* Button Hover Effect */
+.scheme-details-btn:hover {
+  background-color: #0056b3; /* Darker Blue */
+}
+
+.scheme-accept-btn:hover {
+  background-color: #3e8e41; /* Darker Green */
+}
+
+.scheme-reject-btn:hover {
+  background-color: #d32f2f; /* Darker Red */
+}
+
+/* Responsive Design */
+@media (max-width: 600px) {
+  .scheme-details-container {
+    width: 95%;
+    padding: 15px;
+  }
+
+  .scheme-details-btn,
+  .scheme-accept-btn,
+  .scheme-reject-btn {
+    padding: 8px 12px;
+    font-size: 12px;
+  }
 }

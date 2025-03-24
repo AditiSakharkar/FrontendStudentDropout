@@ -1,79 +1,105 @@
 /* Container Styling */
-.container {
-    text-transform: capitalize;
-    width: 60%;
-    margin: 65px auto;
-    padding: 30px;
-    background-color: #ffffff;
-    border-radius: 12px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    
+#user-application-container {
+  text-transform: capitalize;
+  width: 50rem;
+  margin: 80px auto;
+  padding: 30px;
+  background-color: #f0f8ff;
+  border-radius: 10px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+  font-family: 'Arial', sans-serif;
+}
+
+/* Header Styling */
+#user-application-title {
+  color: #004080;
+  font-size: 2rem;
+  margin-bottom: 20px;
+}
+
+.user-application-heading {
+  color: #004080;
+  font-size: 1.5rem;
+}
+.user-application-label {
+  color: #004080;
+  text-transform: capitalize; /* Capitalizes the label */
+}
+
+#user-application-email {
+ color: #004080;;
+  text-transform: lowercase;
+}
+
+/* Paragraph Styling */
+.user-application-detail {
+  font-size: 1.1rem;
+  color: #333;
+  margin-bottom: 10px;
+}
+
+.user-application-label {
+  color: #004080;
+  font-weight: bold;
+}
+
+/* Scheme Section */
+#user-application-scheme-section {
+  background-color: white;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+  margin-bottom: 20px;
+}
+
+/* Document Section */
+#user-application-documents {
+  margin-top: 20px;
+}
+
+.user-application-doc-link {
+  color: #007bff;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.user-application-doc-link:hover {
+  text-decoration: underline;
+}
+
+/* Back Button */
+#user-application-back-btn {
+  margin-top: 20px;
+  padding: 12px 24px;
+  background-color: #0073e6;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+#user-application-back-btn:hover {
+  background-color: #005bb5;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  #user-application-container {
+    width: 90%;
+    padding: 20px;
   }
-  
-  /* Header Styling */
-  h1, h2, h4 {
-    color: #333; 
-    text-transform: 'capitalize';
+
+  #user-application-title {
+    font-size: 1.8rem;
   }
-  
-  h1 {
-    font-size: 2rem;
+
+  .user-application-heading {
+    font-size: 1.3rem;
   }
-  
-  h2 {
-    font-size: 1.4rem;
-    margin-bottom: 10px;
+
+  #user-application-back-btn {
+    width: 100%;
   }
-  
-  h4 {
-    font-size: 1.2rem;
-    margin-top: 20px;
-  }
-  
-  /* Paragraph Styling */
-  p {
-    font-size: 1rem;    
-    text-transform: capitalize;
-  }
-  
-  /* Remove Bullet Points */
-  ul {
-    list-style-type: none;
-    padding: 0;
-    margin-top: 10px;
-  }
-  
-  li {
-    margin-bottom: 10px;
-  }
-  
-  /* Document Link Styling */
-  .document-link {
-    color: #007bff;
-    text-decoration: none;
-    font-weight: 500;
-  }
-  
-  .document-link:hover {
-    text-decoration: underline;
-  }
-  .emailstudent{
-    text-transform: lowercase;
-  }
-  /* Button Styling */
-  .back-btn {
-    margin-top: 20px;
-    padding: 12px 24px;
-    background-color: #007bff;
-    color: white;
-    border: none;
-    border-radius: 8px;
-    font-size: 1rem;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-  }
-  
-  .back-btn:hover {
-    background-color: #0056b3;
-  }
-  
+}

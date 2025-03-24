@@ -1,0 +1,143 @@
+/* Container Styling */
+#fulldetails-container {
+  width: 100%;
+  max-width: 700px;
+  margin: 40px auto;
+  padding: 30px;
+  background-color: #f7f9fc;
+  border-radius: 12px;
+  border: 1px solid #d9e2ec;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+  margin-bottom: 60px;
+  text-transform: capitalize;
+}
+
+/* Header Styling */
+#fulldetails-container h2 {
+  color: #2a3d66;
+  text-align: center;
+}
+
+#fulldetails-container h3 {
+  color: #4a90e2;
+  margin-top: 20px;
+}
+
+/* Form and Input Styling */
+#fulldetails-form {
+  display: flex;
+  flex-direction: column;
+}
+
+.fulldetails-label {
+  margin-bottom: 12px;
+  font-size: 14px;
+  color: #333;
+}
+
+.fulldetails-input {
+  width: 100%;
+  padding: 10px;
+  margin-top: 4px;
+  margin-bottom: 16px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  font-size: 14px;
+  box-sizing: border-box;
+  transition: border-color 0.3s;
+}
+
+.fulldetails-input:focus {
+  border-color: #4a90e2;
+  outline: none;
+}
+
+/* Education Section Styling */
+#education-section {
+  margin-bottom: 30px;
+}
+
+.education-card {
+  background-color: #eaf6ff;
+  padding: 15px;
+  border-radius: 8px;
+  margin-bottom: 16px;
+  border: 1px solid #4a90e2;
+}
+
+.education-card label {
+  display: block;
+  color: #2a3d66;
+  font-size: 14px;
+  margin-bottom: 8px;
+}
+
+/* Button Styling */
+.add-edu-btn,
+.save-edu-btn,
+.remove-edu-btn {
+  background-color: #4a90e2;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 8px;
+  font-size: 14px;
+  cursor: pointer;
+  margin-top: 10px;
+  transition: background-color 0.3s;
+}
+
+.add-edu-btn:hover,
+.save-edu-btn:hover,
+.remove-edu-btn:hover {
+  background-color: #357ab8;
+}
+
+/* Remove Button Special Styling */
+.remove-edu-btn {
+  background-color: #e74c3c;
+}
+
+.remove-edu-btn:hover {
+  background-color: #c0392b;
+}
+
+/* Dropout Section */
+#dropout-section {
+  margin-bottom: 30px;
+}
+
+#dropout-section label {
+  color: #2a3d66;
+  font-size: 14px;
+}
+
+/* Submit Button Styling */
+#fulldetails-submit {
+  background-color: #4a90e2;
+  color: white;
+  border: none;
+  padding: 12px 24px;
+  border-radius: 8px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+#fulldetails-submit:hover {
+  background-color: #357ab8;
+}
+
+/* Responsive Design */
+@media (max-width: 600px) {
+  #fulldetails-container {
+    padding: 20px;
+  }
+
+  #fulldetails-submit, 
+  .add-edu-btn, 
+  .save-edu-btn, 
+  .remove-edu-btn {
+    width: 100%;
+  }
+}

@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
-import { studentapply } from "../../redux/slices/authslice.js";
+import { studentapply ,getparticular_student_details} from "../../redux/slices/authslice.js";
 import { toast } from "react-hot-toast";
 import "./StudentForm.css";
 
@@ -10,10 +10,10 @@ const EnrollmentForm = () => {
   const dispatch = useDispatch();
   const { schemeId } = useParams();
   const { schemes, user } = useSelector((state) => state.auth);
-  
+
   const scheme = schemes.find((scheme) => scheme._id === schemeId);
-  const application = user.applications.find((app) => app.scheme === schemeId);
-  const schemename=scheme.title;
+  const application = user?.applications?.find((app) => app.scheme === schemeId);
+  const schemename = scheme?.title;
 
   const [documentLinks, setDocumentLinks] = useState(
     scheme?.documents?.reduce((acc, doc) => {
@@ -31,31 +31,22 @@ const EnrollmentForm = () => {
 
   const handlesubmit = async () => {
     const incompleteLinks = Object.entries(documentLinks).filter(([_, link]) => !link.trim());
-
     if (incompleteLinks.length > 0) {
       return toast.error("Please provide links for all required documents.");
     }
-
+  
     try {
-      const formData = {
-        schemename,
-        schemeId: scheme._id,
-        documentLinks,
-      };
-
-      const result = await dispatch(studentapply(formData));
-      if (result.type === studentapply.fulfilled.type) {
-        toast.success("Application successful!");
-        navigate("/student/dashboard");
-      } else if (result.type === studentapply.rejected.type) {
-        toast.error(result.payload || "Application failed!");
-      }
+      const formData = { schemename, schemeId: scheme._id, documentLinks };
+      await dispatch(studentapply(formData)).unwrap();
+      await dispatch(getparticular_student_details(user._id)).unwrap(); // Ensure state update
+      toast.success("Application successful!");
+      navigate("/student/dashboard");
     } catch (error) {
       toast.error("An unexpected error occurred.");
       console.error(error);
     }
   };
-
+  
   if (!scheme) {
     return <div>Scheme not found.</div>;
   }
@@ -63,10 +54,18 @@ const EnrollmentForm = () => {
   return (
     <div className="enrollment-container">
       <h1>{scheme.title}</h1>
-      <h2>Details of the Scheme</h2>
+      <h2>Scheme Details</h2>
       <div className="scheme-info">
         <p><strong>Scheme ID:</strong> {scheme._id}</p>
         <p><strong>Description:</strong> {scheme.description}</p>
+        <p><strong>Eligibility Criteria:</strong> {scheme.eligibilityCriteria || "N/A"}</p>
+        <p><strong>Issuing Body:</strong> {scheme.issuingBody || "N/A"}</p>
+        <p><strong>Last Date of Submission:</strong> {scheme.lastDateOfSubmission 
+          ? new Date(scheme.lastDateOfSubmission).toLocaleDateString() 
+          : "N/A"}</p>
+        <p><strong>Scheme Type:</strong> {scheme.schemeType || "N/A"}</p>
+        <p><strong>Amount or Support Provided:</strong> {scheme.amountOrSupport || "N/A"}</p>
+        <p><strong>Contact Information:</strong> {scheme.contactInformation || "N/A"}</p>
       </div>
 
       {/* Document Upload Section */}

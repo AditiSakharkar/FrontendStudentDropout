@@ -11,11 +11,10 @@ const SchemeDetails = () => {
   const { scheme_details } = useSelector((state) => state.auth);
 
   useEffect(() => {
-    // 🔹 Re-fetch scheme details to update the status
     dispatch(getparticular_schemenames(schemeId));
-  }, [dispatch, schemeId]); // Runs when schemeId changes
+  }, [dispatch, schemeId]);
 
-  const students = scheme_details ? scheme_details.appliedUsers : [];
+  const students = scheme_details?.appliedUsers || [];
 
   const handledetails = async (studentId) => {
     await dispatch(getparticular_student_details(studentId)).unwrap();
@@ -27,17 +26,35 @@ const SchemeDetails = () => {
   }
 
   return (
-    <div className="container">
-      <h1>{scheme_details.title}</h1>
-      <h2>Details of the Scheme</h2>
+    <div className="scheme-details-container">
+      <h1 className="scheme-details-header">{scheme_details.title}</h1>
+      <h2 className="scheme-section-title">Details of the Scheme</h2>
+
+      {/* Scheme Information */}
       <div className="scheme-info">
         <p><strong>Scheme ID:</strong> {scheme_details._id}</p>
         <p><strong>Description:</strong> {scheme_details.description}</p>
+        <p><strong>Eligibility Criteria:</strong> {scheme_details.eligibilityCriteria}</p>
+        <p><strong>Issuing Body:</strong> {scheme_details.issuingBody || 'N/A'}</p>
+        <p><strong>Last Date of Submission:</strong> {scheme_details.lastDateOfSubmission 
+          ? new Date(scheme_details.lastDateOfSubmission).toLocaleDateString() 
+          : 'N/A'}
+        </p>
+        <p><strong>Scheme Type:</strong> {scheme_details.schemeType || 'N/A'}</p>
+        <p><strong>Amount or Support:</strong> {scheme_details.amountOrSupport || 'N/A'}</p>
+        <p><strong>Application Process:</strong> {scheme_details.applicationProcess || 'N/A'}</p>
+        <p><strong>Selection Process:</strong> {scheme_details.selectionProcess || 'N/A'}</p>
+        <p><strong>Duration of Support:</strong> {scheme_details.durationOfSupport || 'N/A'}</p>
+        <p><strong>Terms and Conditions:</strong> {scheme_details.termsAndConditions || 'N/A'}</p>
+        <p><strong>Contact Information:</strong> {scheme_details.contactInformation || 'N/A'}</p>
+        <p><strong>Status:</strong> {scheme_details.status}</p>
+        <p><strong>Region Specific:</strong> {scheme_details.regionSpecific || 'N/A'}</p>
       </div>
-      {/* Display Required Documents */}
-      <h3>Required Documents:</h3>
-      {scheme_details.documents && scheme_details.documents.length > 0 ? (
-        <ul>
+
+      {/* Required Documents */}
+      <h3 className="scheme-section-title">Required Documents:</h3>
+      {scheme_details.documents?.length > 0 ? (
+        <ul className="scheme-documents-list">
           {scheme_details.documents.map((doc, index) => (
             <li key={index}>{doc}</li>
           ))}
@@ -45,33 +62,39 @@ const SchemeDetails = () => {
       ) : (
         <p>No documents specified.</p>
       )}
-      <h3>Students Applied:</h3>
-      <table className="student-table">
-        <thead>
-          <tr>
-            <th>Student ID</th>
-            <th>Applied At</th>
-            <th>Status</th>
-            <th>Action</th>
-          </tr>
-        </thead>
-        <tbody>
-          {students.map((student, index) => (
-            <tr key={index}>
-              <td>{student.user}</td>
-              <td>{new Date(student.appliedAt).toLocaleDateString()}</td>
-              <td>{student.status}</td>
-              <td>
-                <button 
-                  className="details-btn"
-                  onClick={() => handledetails(student.user)}>
-                  Student application Details
-                </button>
-              </td>
+
+      {/* Applied Students Section */}
+      <h3 className="scheme-section-title">Students Applied:</h3>
+      {students.length > 0 ? (
+        <table className="scheme-student-table">
+          <thead>
+            <tr>
+              <th>Student ID</th>
+              <th>Applied At</th>
+              <th>Status</th>
+              <th>Action</th>
             </tr>
-          ))}
-        </tbody>
-      </table>
+          </thead>
+          <tbody>
+            {students.map((student, index) => (
+              <tr key={index}>
+                <td>{student.user}</td>
+                <td>{new Date(student.appliedAt).toLocaleDateString()}</td>
+                <td>{student.status}</td>
+                <td>
+                  <button 
+                    className="scheme-details-btn"
+                    onClick={() => handledetails(student.user)}>
+                    Student Application Details
+                  </button>
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      ) : (
+        <p>No students have applied yet.</p>
+      )}
     </div>
   );
 };

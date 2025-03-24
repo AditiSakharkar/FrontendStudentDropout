@@ -180,6 +180,25 @@ export const studentSignup = createAsyncThunk(
       }
     }
   );
+
+  export const updateStudentDetails = createAsyncThunk(
+    'auth/updateStudentDetails',
+    async ({ studentId, updatedData }, { rejectWithValue }) => {
+      try {
+        console.log(studentId);
+        const response = await axios.put(`${server}/api/scheme/updatestudent/${studentId}`, updatedData, {
+          headers: {
+            "Content-Type": "application/json",
+          },
+          withCredentials: true,
+        });
+        return response.data;
+      } catch (error) {
+        return rejectWithValue(error.response?.data?.message || 'Failed to update profile');
+      }
+    }
+  );
+  
   const authslice = createSlice({
   name: "auth",
   initialState: {
@@ -325,6 +344,17 @@ export const studentSignup = createAsyncThunk(
         state.loading = false;
         state.error = action.payload;
       })
+      .addCase(updateStudentDetails.pending, (state) => {
+        state.loading = true;
+      })
+      .addCase(updateStudentDetails.fulfilled, (state, action) => {
+        state.loading = false;
+        state.user = action.payload.user;
+      })
+      .addCase(updateStudentDetails.rejected, (state, action) => {
+        state.loading = false;
+        state.error = action.payload;
+      });
      
   },
 });

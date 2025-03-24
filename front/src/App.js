@@ -17,30 +17,34 @@ import AdminBrowseScheme from "./components/AdminDashboard/AdminBrowseScheme";
 import SchemeDetails from "./components/AdminDashboard/SchemeDetails/SchemeDetails";
 import Student_Applicationdetails from "./components/Student_applicationdetails/Student_Applicationdetails";
 import UserApplicationDetails from "./components/StudentDashboard/UserApplicationDetails";
+import ShowDetails from "./components/StudentDashboard/ShowDetails";
 
 
 function App() {
   return (
     <Router>
       <Navbar />
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/login" element={<Login />} />
-        <Route path="/register" element={<Register />} />
-        <Route path="/contact" element={<Contact />} />
-        <Route path="/admin/dashboard" element={<AdminDashboard />} />
-        <Route path="/student/dashboard" element={<StudentDashboard />} />
-        <Route path="/CreateSchemeForm" element={<CreateSchemeForm />} />
-        <Route path="/StudentForm/:schemeId" element={<StudentForm />} />
-        <Route path="/BrowseScheme" element={<BrowseScheme />} /> {/* Added Route */}
-        <Route path="/AppliedSchemes" element={<AppliedSchemes />} /> {/* Added Route */}
-        <Route path="/AdminBrowseScheme" element={<AdminBrowseScheme />} /> {/* Added Route */}
-        <Route path="/SchemeDetails/:schemeId" element={<SchemeDetails />} /> {/* Added Route */}
-        <Route path="/Studentdetails/:studentId" element={<Student_Applicationdetails />} /> {/* Added Route */}
-        <Route path="/userapplicationschemedetails/:schemeid" element={<UserApplicationDetails />} /> {/* Added Route */}
-        <Route path="/Fulldetails" element={<Fulldetails />} /> {/* Added Route */}
-        
-      </Routes>
+      <div className="app-content">
+  <Routes>
+    <Route path="/" element={<Home />} />
+    <Route path="/login" element={<Login />} />
+    <Route path="/register" element={<Register />} />
+    <Route path="/contact" element={<Contact />} />
+    <Route path="/admin/dashboard" element={<AdminDashboard />} />
+    <Route path="/student/dashboard" element={<StudentDashboard />} />
+    <Route path="/CreateSchemeForm" element={<CreateSchemeForm />} />
+    <Route path="/StudentForm/:schemeId" element={<StudentForm />} />
+    <Route path="/BrowseScheme" element={<BrowseScheme />} />
+    <Route path="/AppliedSchemes" element={<AppliedSchemes />} />
+    <Route path="/AdminBrowseScheme" element={<AdminBrowseScheme />} />
+    <Route path="/SchemeDetails/:schemeId" element={<SchemeDetails />} />
+    <Route path="/Studentdetails/:studentId" element={<Student_Applicationdetails />} />
+    <Route path="/userapplicationschemedetails/:schemeid" element={<UserApplicationDetails />} />
+    <Route path="/Fulldetails" element={<Fulldetails />} />
+    <Route path="/ShowDetails" element={<ShowDetails />} />
+  </Routes>
+</div>
+
       <Footer />
     </Router>
   );

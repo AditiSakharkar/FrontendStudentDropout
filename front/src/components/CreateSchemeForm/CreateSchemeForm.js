@@ -14,8 +14,17 @@ const CreateSchemeForm = () => {
     title: "",
     description: "",
     eligibilityCriteria: "",
+    issuingBody: "",
     lastDateOfSubmission: "",
-    documents: [], // List of required documents
+    schemeType: "",
+    amountOrSupport: "",
+    applicationProcess: "",
+    selectionProcess: "",
+    durationOfSupport: "",
+    termsAndConditions: "",
+    contactInformation: "",
+    regionSpecific: "",
+    documents: [],
   });
 
   const [documentInput, setDocumentInput] = useState("");
@@ -29,12 +38,12 @@ const CreateSchemeForm = () => {
   };
 
   const handleAddDocument = () => {
-    if (documentInput.trim() !== "") {
+    if (documentInput.trim()) {
       setFormData((prevData) => ({
         ...prevData,
         documents: [...prevData.documents, documentInput.trim()],
       }));
-      setDocumentInput(""); // Clear input field
+      setDocumentInput("");
     }
   };
 
@@ -47,7 +56,6 @@ const CreateSchemeForm = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-
     try {
       const result = await dispatch(releasescheme(formData));
 
@@ -97,6 +105,15 @@ const CreateSchemeForm = () => {
           required
         ></textarea>
 
+        <label htmlFor="issuingBody">Issuing Body:</label>
+        <input
+          type="text"
+          id="issuingBody"
+          name="issuingBody"
+          value={formData.issuingBody}
+          onChange={handleChange}
+        />
+
         <label htmlFor="endDate">Last Date of Submission:</label>
         <input
           type="date"
@@ -104,10 +121,83 @@ const CreateSchemeForm = () => {
           name="lastDateOfSubmission"
           value={formData.lastDateOfSubmission}
           onChange={handleChange}
-          required
         />
 
-        {/* Add Documents Input */}
+        <label htmlFor="schemeType">Scheme Type:</label>
+        <select
+          id="schemeType"
+          name="schemeType"
+          value={formData.schemeType}
+          onChange={handleChange}
+        >
+          <option value="">Select Scheme Type</option>
+          <option value="Scholarship">Scholarship</option>
+          <option value="Loan">Loan</option>
+          <option value="Grant">Grant</option>
+          <option value="Other">Other</option>
+        </select>
+
+        <label htmlFor="amountOrSupport">Amount or Support Provided:</label>
+        <input
+          type="text"
+          id="amountOrSupport"
+          name="amountOrSupport"
+          value={formData.amountOrSupport}
+          onChange={handleChange}
+        />
+
+        <label htmlFor="applicationProcess">Application Process:</label>
+        <textarea
+          id="applicationProcess"
+          name="applicationProcess"
+          value={formData.applicationProcess}
+          onChange={handleChange}
+        ></textarea>
+
+        <label htmlFor="selectionProcess">Selection Process:</label>
+        <textarea
+          id="selectionProcess"
+          name="selectionProcess"
+          value={formData.selectionProcess}
+          onChange={handleChange}
+        ></textarea>
+
+        <label htmlFor="durationOfSupport">Duration of Support:</label>
+        <input
+          type="text"
+          id="durationOfSupport"
+          name="durationOfSupport"
+          value={formData.durationOfSupport}
+          onChange={handleChange}
+        />
+
+        <label htmlFor="termsAndConditions">Terms and Conditions:</label>
+        <textarea
+          id="termsAndConditions"
+          name="termsAndConditions"
+          value={formData.termsAndConditions}
+          onChange={handleChange}
+        ></textarea>
+
+        <label htmlFor="contactInformation">Contact Information:</label>
+        <input
+          type="text"
+          id="contactInformation"
+          name="contactInformation"
+          value={formData.contactInformation}
+          onChange={handleChange}
+        />
+
+        <label htmlFor="regionSpecific">Region Specific (if any):</label>
+        <input
+          type="text"
+          id="regionSpecific"
+          name="regionSpecific"
+          value={formData.regionSpecific}
+          onChange={handleChange}
+        />
+
+        {/* Documents Section */}
         <label htmlFor="documents">Required Documents:</label>
         <div className="documents-container">
           <input
@@ -122,11 +212,10 @@ const CreateSchemeForm = () => {
           </button>
         </div>
 
-        {/* Display Added Documents */}
         <ul className="documents-list">
           {formData.documents.map((doc, index) => (
             <li key={index}>
-              {doc}{" "}
+              {doc}
               <button
                 type="button"
                 className="remove-button"
